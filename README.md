@@ -1,6 +1,6 @@
 # Tic-Tac-Toe³
 
-A phone-first tic-tac-toe arcade by **LJ** · Powered by SCODE · v1.0
+A phone-first tic-tac-toe arcade by **LJ** · Powered by SCODE · v1.1
 
 **Play:** https://driftlinegame.github.io/tictactoe3/ (after GitHub Pages is turned on)
 
@@ -17,4 +17,5 @@ A phone-first tic-tac-toe arcade by **LJ** · Powered by SCODE · v1.0
 - One self-contained `index.html`, no build step and no dependencies.
 
 ## Version history
+- **v1.1**: vibration maxed out: stronger multi-tick haptic bursts (iPhone, iOS 18+) and full vibration patterns (Android), instant feedback on touch, and a "tap to test" vibration toggle on the home screen.
 - **v1.0**: first release: Classic, Ultimate, Cubed³, pass & play, 4 AI levels, send preview + confirm, wormholes, sounds, auto-save.

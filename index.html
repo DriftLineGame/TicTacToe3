@@ -195,7 +195,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 
     <button id="playBtn" class="big-btn">PLAY</button>
     <button id="rulesBtn" class="link-btn">How to play this mode</button>
-    <div class="brand"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE <span class="ver">· v1.0</span></div>
+    <button id="vibeBtn" class="link-btn" style="color:var(--grey);font-size:13.5px;padding:2px"></button>
+    <div class="brand"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE <span class="ver">· v1.1</span></div>
   </div>
 </section>
 
@@ -222,7 +223,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
       <button id="wormBtn" class="worm-btn hidden"></button>
       <button id="confirmBtn" class="confirm-btn" disabled>CONFIRM</button>
     </div>
-    <div class="gfoot"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE · v1.0</div>
+    <div class="gfoot"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE · v1.1</div>
   </div>
 </section>
 
@@ -477,7 +478,7 @@ function ENGINE() {
 <script>
 "use strict";
 const E = ENGINE();
-const VERSION = "v1.0";
+const VERSION = "v1.1";
 const $ = id => document.getElementById(id);
 const POS = ["top-left", "top-middle", "top-right", "middle-left", "centre", "middle-right", "bottom-left", "bottom-middle", "bottom-right"];
 const COL = { 1: "#EC4899", 2: "#3B82F6" };
@@ -599,18 +600,27 @@ const SFX = {
   },
 };
 
-// Haptics: Android vibrate, iOS 18 switch-checkbox trick
+// Haptics, maxed out.
+// Android: real vibration patterns. iPhone: Safari gives web pages no vibration API, so we use the
+// iOS 18+ "switch" checkbox trick: every toggle = one system haptic tick. We fire bursts of ticks
+// (the first one synchronously inside the tap, which iOS requires) to make it as strong as iOS allows.
+const HAPTIC = {
+  light:  { android: [35],                         ticks: [0, 40] },
+  medium: { android: [55, 35, 55],                 ticks: [0, 35, 70] },
+  heavy:  { android: [90, 40, 90, 40, 140],        ticks: [0, 30, 60, 90, 120, 150] },
+  max:    { android: [200, 60, 200, 60, 400],      ticks: [0, 30, 60, 90, 120, 150, 260, 290, 320, 350, 380, 520, 550, 580, 610] },
+};
+function hapTick() { try { const l = $("hapl"); l.click(); } catch (e) {} }
 function haptic(kind = "light") {
-  try {
-    if (navigator.vibrate) { navigator.vibrate(kind === "heavy" ? [18, 40, 18] : 10); return; }
-    $("hapl").click();
-    if (kind === "heavy") setTimeout(() => $("hapl").click(), 90);
-  } catch (e) {}
+  if (prefs.vibe === false) return;
+  const h = HAPTIC[kind] || HAPTIC.light;
+  try { if (navigator.vibrate && navigator.vibrate(h.android)) return; } catch (e) {}
+  hapTick(); for (const t of h.ticks.slice(1)) setTimeout(hapTick, t);
 }
 
 // ======================= SETTINGS / SAVE =======================
 const SAVE_KEY = "ttt3-save-v1", PREF_KEY = "ttt3-prefs-v1";
-let prefs = { L: 3, opp: "pass", diff: 1, side: 1, sound: true };
+let prefs = { L: 3, opp: "pass", diff: 1, side: 1, sound: true, vibe: true };
 try { Object.assign(prefs, JSON.parse(localStorage.getItem(PREF_KEY) || "{}")); } catch (e) {}
 function savePrefs() { try { localStorage.setItem(PREF_KEY, JSON.stringify(prefs)); } catch (e) {} }
 SFX.on = prefs.sound;
@@ -1071,12 +1081,12 @@ function commit(cell) {
   if (G.worm) { s.worm[p]--; SFX.wormhole(); }
   const ev = E.play(s, cell);
   G.worm = false; G.lastT = now(); G.pending = -1; G.pinfo = null;
-  SFX.place(p); haptic();
+  SFX.place(p); haptic("medium");
   const vsAI = G.cfg.opp === "ai", good = !vsAI || p === G.cfg.human;
   let big = false;
-  if (ev.game >= 0) { G.gameFx[ev.game] = now(); big = true; setTimeout(() => { good ? SFX.gameWin() : SFX.boardLost(); haptic("heavy"); }, 120);
+  if (ev.game >= 0) { G.gameFx[ev.game] = now(); big = true; haptic("max"); setTimeout(() => { good ? SFX.gameWin() : SFX.boardLost(); }, 120);
     toast(`${pname(p, true)} won the ${POS[ev.game]} game!`, COL[p]); if (good) confetti(60); }
-  if (ev.board >= 0) { G.boardFx[ev.board] = now(); if (!big) { setTimeout(() => { good ? SFX.boardWin() : SFX.boardLost(); haptic("heavy"); }, 120);
+  if (ev.board >= 0) { G.boardFx[ev.board] = now(); if (!big) { haptic("heavy"); setTimeout(() => { good ? SFX.boardWin() : SFX.boardLost(); }, 120);
     toast(`${pname(p, true)} won ${s.L === 3 ? "a" : "the " + POS[ev.board]} board!`, COL[p]); } }
   if (ev.boardTie >= 0) { G.boardFx[ev.boardTie] = now(); if (!big) { setTimeout(() => SFX.boardTie(), 120); toast("Board tied: it counts for nobody", "#8E87A6"); } }
   if (ev.gameTie >= 0) { G.gameFx[ev.gameTie] = now(); toast(`The ${POS[ev.gameTie]} game is tied`, "#8E87A6"); }
@@ -1113,8 +1123,8 @@ function endGame() {
     if (w === 3) SFX.tieTune();
     else if (humanWon) { SFX.fanfare(); confetti(220); setTimeout(() => confetti(140), 900); }
     else SFX.sadTrombone();
-    haptic("heavy");
   }, 350);
+  haptic("max");
   setTimeout(() => showEnd(), 1300);
 }
 function showEnd() {
@@ -1156,7 +1166,7 @@ function boardTap(ev) {
   }
   if (s.L === 1) return commit(cell);
   if (G.pending === cell) { confirmMove(); return; } // double tap = confirm
-  setPending(cell); SFX.select(s.turn); SFX.whoosh(); haptic();
+  setPending(cell); SFX.select(s.turn); SFX.whoosh(); haptic("light");
 }
 function confirmMove() {
   SFX.init();
@@ -1181,6 +1191,8 @@ $("wormBtn").onclick = () => {
   updateHUD();
 };
 document.addEventListener("gesturestart", e => e.preventDefault());
+document.addEventListener("pointerdown", e => { if (e.target.closest("button")) haptic("light"); }, true);
+board.addEventListener("pointerdown", () => { if (G && !G.busy && !G.s.winner && !isAI(G.s.turn)) haptic("light"); });
 
 // ======================= SCREENS =======================
 function show(id) { for (const s of document.querySelectorAll(".screen")) s.classList.toggle("active", s.id === id); }
@@ -1224,6 +1236,9 @@ const RULES = {
 };
 function showRules(L) { openSheet(RULES[L] + `<div class="row"><button class="pri" id="rOk">GOT IT</button></div>`); $("rOk").onclick = closeSheet; }
 $("rulesBtn").onclick = () => { SFX.init(); showRules(prefs.L); };
+function vibeLabel() { $("vibeBtn").textContent = prefs.vibe ? "Vibration: MAX · tap to test" : "Vibration: off"; }
+$("vibeBtn").onclick = () => { prefs.vibe = !prefs.vibe; savePrefs(); vibeLabel(); if (prefs.vibe) haptic("max"); };
+vibeLabel();
 $("rulesBtn2").onclick = () => { SFX.init(); if (G) showRules(G.s.L); };
 
 // ---- home controls
