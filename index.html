@@ -157,6 +157,61 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
   .confirm-btn,.worm-btn{height:48px}.confirm-btn{font-size:17px}.gfoot{font-size:9.5px}
 }
 @media (max-height:560px){ .gfoot{display:none} }
+
+/* ---------- v2: face-to-face, fx, tutorial ---------- */
+#game{isolation:isolate}
+.tglow{position:absolute;inset:0;pointer-events:none;z-index:-1;opacity:0;transition:opacity .7s}
+.tglow.x{background:radial-gradient(95% 42% at 50% 100%,rgba(236,72,153,.24),transparent 72%)}
+.tglow.o{background:radial-gradient(95% 42% at 50% 100%,rgba(59,130,246,.24),transparent 72%)}
+#game.face .tglow.o{background:radial-gradient(95% 40% at 50% 0%,rgba(59,130,246,.26),transparent 72%)}
+.tglow.on{opacity:1}
+.turn-pill.bump{animation:bump .55s cubic-bezier(.2,1.7,.4,1)}
+@keyframes bump{0%{transform:scale(.6);opacity:.3}100%{transform:none;opacity:1}}
+.ppanel{display:none;flex:none;padding:5px 10px;transition:opacity .35s}
+#game.face .ppanel{display:block}
+#game.face .hud,#game.face .actions{display:none}
+.ppanel.top{transform:rotate(180deg)}
+.pp{display:flex;gap:9px;align-items:stretch;background:#fff;border-radius:20px;padding:7px;box-shadow:0 1px 0 var(--line),0 6px 18px rgba(80,50,160,.08);border:2.5px solid transparent;transition:border-color .3s,box-shadow .3s}
+.ppanel.active .pp{border-color:var(--pc);box-shadow:0 8px 26px var(--pcs)}
+.ppanel.idle{opacity:.5}
+.pmap{flex:none;border-radius:12px;background:var(--bg);touch-action:none}
+.pp-col{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0;justify-content:space-between}
+.pp-status{font-size:13.5px;line-height:1.25;font-weight:500}
+.pp-status b{font-weight:800}.pp-status .x{color:var(--pink)}.pp-status .o{color:var(--blue)}
+.pp-status .who{display:inline-block;color:#fff;border-radius:99px;padding:0 8px;font-weight:800;margin-right:6px;font-size:12.5px;font-family:"Archivo Black"}
+.pp-status .win{color:#fff;background:var(--grad);border-radius:7px;padding:0 6px;font-weight:800;font-size:11.5px;white-space:nowrap}
+.pp-btns{display:flex;gap:6px}
+.pp-btns .confirm-btn,.pp-btns .worm-btn{height:44px}
+.pp-btns .confirm-btn{font-size:16px}
+.pp-btns .worm-btn{padding:0 9px;font-size:12px}
+.pp-btns .worm-btn svg{width:22px;height:22px}
+.flipwrap{position:absolute;inset:0;pointer-events:none;transition:transform .3s}
+.flipwrap.flip{transform:rotate(180deg)}
+#game.face.oturn .toast{rotate:180deg}
+.stamp{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scale(0);font-family:"Archivo Black",sans-serif;color:#fff;font-size:clamp(28px,10vw,48px);padding:10px 24px;border-radius:20px;pointer-events:none;opacity:0;white-space:nowrap;box-shadow:0 16px 44px rgba(0,0,0,.28);letter-spacing:.03em;z-index:3;text-shadow:0 2px 0 rgba(0,0,0,.12)}
+.stamp:empty{display:none}
+.stamp.go{animation:stamp 1.3s cubic-bezier(.2,1.4,.4,1) both}
+@keyframes stamp{0%{opacity:0;transform:translate(-50%,-50%) scale(2.6) rotate(-16deg)}16%{opacity:1;transform:translate(-50%,-50%) scale(.9) rotate(-6deg)}26%{transform:translate(-50%,-50%) scale(1.06) rotate(-6deg)}36%{transform:translate(-50%,-50%) scale(1) rotate(-6deg)}78%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(-6deg)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.25) rotate(-6deg)}}
+.stage.shake{animation:shake .4s}
+.stage.shake-big{animation:shakeb .6s}
+@keyframes shake{20%{transform:translate(-5px,2px)}40%{transform:translate(5px,-2px)}60%{transform:translate(-3px,1px)}80%{transform:translate(2px,0)}}
+@keyframes shakeb{10%{transform:translate(-9px,4px) rotate(-.6deg)}25%{transform:translate(9px,-4px) rotate(.6deg)}40%{transform:translate(-7px,3px)}55%{transform:translate(6px,-2px)}70%{transform:translate(-4px,1px)}85%{transform:translate(2px,0)}}
+.stage #board{transition:filter .6s}
+.stage.sad #board{filter:grayscale(1) brightness(.92)}
+.tut-card{display:flex;align-items:center;gap:12px;width:100%;background:#fff;border-radius:18px;padding:11px 14px;text-align:left;box-shadow:0 1px 0 var(--line),0 6px 20px rgba(80,50,160,.06)}
+.tut-card .play{width:42px;height:42px;flex:none;border-radius:50%;background:var(--grad);color:#fff;display:grid;place-items:center;font-size:16px;padding-left:3px;box-shadow:0 6px 16px rgba(139,92,246,.35);animation:breathe 2.4s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.08)}}
+.tut-card b{display:block;font-size:16px;font-weight:800}.tut-card span:not(.play){display:block;font-size:13px;color:var(--grey)}
+.sheet video{width:100%;aspect-ratio:16/9;border-radius:16px;background:#000;margin-top:12px;display:block}
+.floaters{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.floaters i{position:absolute;font-family:"Archivo Black";font-style:normal;opacity:.09;animation:drift linear infinite}
+@keyframes drift{0%{transform:translateY(110vh) rotate(0)}100%{transform:translateY(-20vh) rotate(360deg)}}
+.home-wrap{position:relative;z-index:1}
+.big-btn{position:relative;overflow:hidden}
+.big-btn:after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);animation:shine 2.8s ease-in-out infinite}
+@keyframes shine{0%,55%{left:-60%}100%{left:130%}}
+.mode.on .ico{animation:wiggle .5s}
+@keyframes wiggle{30%{transform:rotate(-8deg) scale(1.08)}60%{transform:rotate(6deg)}}
 @media (min-width:700px){ .stage{padding:0 20px} }
 </style>
 </head>
@@ -165,6 +220,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 
 <!-- ================= HOME ================= -->
 <section id="home" class="screen active">
+  <div class="floaters" id="floaters"></div>
   <div class="home-wrap">
     <div class="hero">
       <svg viewBox="0 0 100 100" width="84" height="84"><polygon points="50.00,10.00 84.64,30.00 50.00,50.00 15.36,30.00" fill="#EC4899" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><line x1="61.55" y1="16.67" x2="26.91" y2="36.67" stroke="#fff" stroke-opacity=".75" stroke-width="1.3"/><line x1="38.45" y1="16.67" x2="73.09" y2="36.67" stroke="#fff" stroke-opacity=".75" stroke-width="1.3"/><line x1="73.09" y1="23.33" x2="38.45" y2="43.33" stroke="#fff" stroke-opacity=".75" stroke-width="1.3"/><line x1="26.91" y1="23.33" x2="61.55" y2="43.33" stroke="#fff" stroke-opacity=".75" stroke-width="1.3"/><polygon points="15.36,30.00 50.00,50.00 50.00,90.00 15.36,70.00" fill="#8B5CF6" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><line x1="26.91" y1="36.67" x2="26.91" y2="76.67" stroke="#fff" stroke-opacity=".75" stroke-width="1.3"/><line x1="15.36" y1="43.33" x2="50.00" y2="63.33" stroke="#fff" stroke-opacity=".75" stroke-width="1.3"/><line x1="38.45" y1="43.33" x2="38.45" y2="83.33" stroke="#fff" stroke-opacity=".75" stroke-width="1.3"/><line x1="15.36" y1="56.67" x2="50.00" y2="76.67" stroke="#fff" stroke-opacity=".75" stroke-width="1.3"/><polygon points="50.00,50.00 84.64,30.00 84.64,70.00 50.00,90.00" fill="#3B82F6" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><line x1="61.55" y1="43.33" x2="61.55" y2="83.33" stroke="#fff" stroke-opacity=".75" stroke-width="1.3"/><line x1="50.00" y1="63.33" x2="84.64" y2="43.33" stroke="#fff" stroke-opacity=".75" stroke-width="1.3"/><line x1="73.09" y1="36.67" x2="73.09" y2="76.67" stroke="#fff" stroke-opacity=".75" stroke-width="1.3"/><line x1="50.00" y1="76.67" x2="84.64" y2="56.67" stroke="#fff" stroke-opacity=".75" stroke-width="1.3"/></svg>
@@ -182,6 +238,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 
     <h2 class="sec">Opponent</h2>
     <div class="seg" id="oppSeg"><button data-v="pass">Pass &amp; Play</button><button data-v="ai">vs AI</button></div>
+    <div id="layoutRow" class="hidden" style="display:flex;flex-direction:column;gap:8px">
+      <div class="seg" id="layoutSeg"><button data-v="same">Same side</button><button data-v="face">Face to face</button></div>
+    </div>
     <div id="aiOpts" class="hidden" style="display:flex;flex-direction:column;gap:10px">
       <div class="diffs" id="diffs">
         <button data-d="0" style="--c:#EC4899">Easy<i><em class="f"></em><em></em><em></em><em></em></i></button>
@@ -194,20 +253,24 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
     </div>
 
     <button id="playBtn" class="big-btn">PLAY</button>
+    <button id="tutBtn" class="tut-card"><span class="play">▶</span><div><b>Watch the tutorial</b><span>3-minute video: from tic-tac-toe to Cubed³</span></div></button>
     <button id="rulesBtn" class="link-btn">How to play this mode</button>
     <button id="vibeBtn" class="link-btn" style="color:var(--grey);font-size:13.5px;padding:2px"></button>
-    <div class="brand"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE <span class="ver">· v1.1</span></div>
+    <div class="brand"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE <span class="ver">· v2.0</span></div>
   </div>
 </section>
 
 <!-- ================= GAME ================= -->
 <section id="game" class="screen">
+  <div class="tglow x"></div><div class="tglow o"></div>
   <header class="topbar">
     <button id="homeBtn" class="icon-btn" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" stroke="#1F1B2E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
     <div class="gtitle"><b id="gTitle">Ultimate</b><span id="gSub">Pass &amp; Play</span></div>
+    <button id="faceBtn" class="icon-btn hidden" aria-label="Face to face layout"><svg viewBox="0 0 24 24" fill="none" stroke="#1F1B2E" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4v16M8 4l-3.5 3.5M8 4l3.5 3.5M16 20V4M16 20l-3.5-3.5M16 20l3.5-3.5"/></svg></button>
     <button id="rulesBtn2" class="icon-btn" aria-label="Rules"><svg viewBox="0 0 24 24" fill="none" stroke="#1F1B2E" stroke-width="2.3" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 1 1 3.4 2.3c-.7.3-1 .8-1 1.5v.4"/><circle cx="12" cy="17" r=".6" fill="#1F1B2E"/></svg></button>
     <button id="soundBtn" class="icon-btn" aria-label="Sound"></button>
   </header>
+  <div id="pTop" class="ppanel top"></div>
   <div class="hud">
     <canvas id="map" class="hidden"></canvas>
     <div class="hud-info">
@@ -216,15 +279,16 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
       <div id="worms" class="worms hidden"></div>
     </div>
   </div>
-  <div id="stage" class="stage"><canvas id="board"></canvas><div id="toast" class="toast"></div></div>
+  <div id="stage" class="stage"><canvas id="board"></canvas><div class="flipwrap" id="flipWrap"><div id="stamp" class="stamp"></div></div><div id="toast" class="toast"></div></div>
   <div class="actions">
     <div id="sendInfo" class="send-info"></div>
     <div class="btn-row">
       <button id="wormBtn" class="worm-btn hidden"></button>
       <button id="confirmBtn" class="confirm-btn" disabled>CONFIRM</button>
     </div>
-    <div class="gfoot"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE · v1.1</div>
+    <div class="gfoot"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE · v2.0</div>
   </div>
+  <div id="pBot" class="ppanel bot"></div>
 </section>
 
 <div id="modal" class="modal hidden"><div class="sheet" id="sheet"></div></div>
@@ -476,9 +540,12 @@ function ENGINE() {
 
 </script>
 <script>
+(function(){const f=document.getElementById("floaters"),c=["#EC4899","#8B5CF6","#3B82F6"];for(let i=0;i<14;i++){const e=document.createElement("i");e.textContent=i%2?"X":"O";e.style.left=(Math.random()*92)+"%";e.style.fontSize=(22+Math.random()*46)+"px";e.style.color=c[i%3];e.style.animationDuration=(14+Math.random()*16)+"s";e.style.animationDelay=(-Math.random()*30)+"s";f.appendChild(e);}})();
+</script>
+<script>
 "use strict";
 const E = ENGINE();
-const VERSION = "v1.1";
+const VERSION = "v2.0";
 const $ = id => document.getElementById(id);
 const POS = ["top-left", "top-middle", "top-right", "middle-left", "centre", "middle-right", "bottom-left", "bottom-middle", "bottom-right"];
 const COL = { 1: "#EC4899", 2: "#3B82F6" };
@@ -555,6 +622,8 @@ const SFX = {
     this.tone(p === 1 ? 523 : 392, t, .16, "triangle", .2, { decay: 1 });
     this.noise(t, .06, .08, 2500, 1200);
   },
+  pop() { if (!this.ok()) return; const t = this.t(); this.noise(t, .25, .14, 800, 200, "lowpass", 1); this.tone(90, t, .3, "sine", .25, { to: 45, decay: 1 }); },
+  arrive() { if (!this.ok()) return; const t = this.t(); this.tone(1568, t, .25, "sine", .09, { decay: 1 }); this.tone(2349, t + .05, .25, "sine", .06, { decay: 1 }); },
   whoosh() { if (!this.ok()) return; const t = this.t(); this.noise(t, .32, .12, 400, 2600, "bandpass", 2.5); },
   boardWin() { // game-show ding-ding + sparkle
     if (!this.ok()) return; const t = this.t();
@@ -605,10 +674,10 @@ const SFX = {
 // iOS 18+ "switch" checkbox trick: every toggle = one system haptic tick. We fire bursts of ticks
 // (the first one synchronously inside the tap, which iOS requires) to make it as strong as iOS allows.
 const HAPTIC = {
-  light:  { android: [35],                         ticks: [0, 40] },
-  medium: { android: [55, 35, 55],                 ticks: [0, 35, 70] },
-  heavy:  { android: [90, 40, 90, 40, 140],        ticks: [0, 30, 60, 90, 120, 150] },
-  max:    { android: [200, 60, 200, 60, 400],      ticks: [0, 30, 60, 90, 120, 150, 260, 290, 320, 350, 380, 520, 550, 580, 610] },
+  light:  { android: [45],                                    ticks: [0, 22, 44] },
+  medium: { android: [70, 30, 70],                            ticks: [0, 22, 44, 66, 88, 110, 132] },
+  heavy:  { android: [120, 40, 120, 40, 180],                 ticks: Array.from({ length: 14 }, (_, i) => i * 22) },
+  max:    { android: [300, 60, 300, 60, 500],                 ticks: Array.from({ length: 34 }, (_, i) => i * 22 + (i > 16 ? 120 : 0)) },
 };
 function hapTick() { try { const l = $("hapl"); l.click(); } catch (e) {} }
 function haptic(kind = "light") {
@@ -620,7 +689,7 @@ function haptic(kind = "light") {
 
 // ======================= SETTINGS / SAVE =======================
 const SAVE_KEY = "ttt3-save-v1", PREF_KEY = "ttt3-prefs-v1";
-let prefs = { L: 3, opp: "pass", diff: 1, side: 1, sound: true, vibe: true };
+let prefs = { L: 3, opp: "pass", diff: 1, side: 1, sound: true, vibe: true, face: false };
 try { Object.assign(prefs, JSON.parse(localStorage.getItem(PREF_KEY) || "{}")); } catch (e) {}
 function savePrefs() { try { localStorage.setItem(PREF_KEY, JSON.stringify(prefs)); } catch (e) {} }
 SFX.on = prefs.sound;
@@ -631,7 +700,7 @@ function newGame(cfg, saved) {
   G = {
     cfg, s: saved ? E.fromJSON(saved.s) : E.create(cfg.L),
     pending: -1, pinfo: null, worm: false, view: saved ? saved.view : 4, busy: false,
-    boardFx: {}, gameFx: {}, lastT: 0, viewT: 0, legal: null, legalSet: null, over: false, aiCell: -1,
+    boardFx: {}, gameFx: {}, lastT: 0, viewT: 0, startT: now(), prevView: 4, shownTurn: 0, legal: null, legalSet: null, over: false, aiCell: -1,
   };
   refreshLegal();
 }
@@ -683,10 +752,18 @@ function sizeCanvas(c, ctx, w, h) {
   c.width = Math.round(w * DPR); c.height = Math.round(h * DPR); c.style.width = w + "px"; c.style.height = h + "px";
   ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
 }
+let PMS = 84;
+function isFace() { return !!(G && G.cfg.face && G.cfg.opp === "pass"); }
 function layout() {
+  sizeCanvas(fx, fxctx, window.innerWidth, window.innerHeight);
   if (!G) return;
   const L = G.s.L;
+  $("game").classList.toggle("face", isFace());
   mapC.classList.toggle("hidden", L !== 3);
+  if (isFace() && L === 3) {
+    PMS = Math.round(Math.max(66, Math.min(96, window.innerHeight * .115)));
+    for (const P of PANELS) sizeCanvas(P.map, P.mctx, PMS, PMS);
+  }
   if (L === 3) {
     MS = Math.round(Math.max(84, Math.min(132, window.innerWidth * .31, window.innerHeight * .17)));
     sizeCanvas(mapC, mctx, MS, MS);
@@ -694,7 +771,6 @@ function layout() {
   const st = $("stage").getBoundingClientRect();
   BS = Math.floor(Math.max(200, Math.min(st.width - 12, st.height - 6, 720)));
   sizeCanvas(board, bctx, BS, BS);
-  sizeCanvas(fx, fxctx, window.innerWidth, window.innerHeight);
 }
 window.addEventListener("resize", () => { layout(); });
 
@@ -725,8 +801,8 @@ function boardRectMain(bi) {
   const g = (bi / 9) | 0; if (g !== G.view) return null; return mainGeo().board(bi % 9);
 }
 // map geometry
-function mapGeo() {
-  const M = MS, gap = M * .03, pad = M * .03, T = (M - 2 * pad - 2 * gap) / 3;
+function mapGeo(M = MS) {
+  const gap = M * .03, pad = M * .03, T = (M - 2 * pad - 2 * gap) / 3;
   const game = g => [pad + (g % 3) * (T + gap), pad + ((g / 3) | 0) * (T + gap), T];
   const bp = T * .07, bg = T * .035, B = (T - 2 * bp - 2 * bg) / 3;
   const board = bi => { const [gx, gy] = game((bi / 9) | 0), b = bi % 9; return [gx + bp + (b % 3) * (B + bg), gy + bp + ((b / 3) | 0) * (B + bg), B]; };
@@ -816,7 +892,10 @@ function drawMain(t) {
   // view switch animation (cubed)
   const va = L === 3 ? ease((t - G.viewT) / 280) : 1;
   ctx.save();
-  if (va < 1) { ctx.globalAlpha = va; const sc = .9 + .1 * va; ctx.translate(BS / 2, BS / 2); ctx.scale(sc, sc); ctx.translate(-BS / 2, -BS / 2); }
+  if (va < 1) {
+    const pv = G.prevView, dx = ((G.view % 3) - (pv % 3)) * BS * .45 * (1 - va), dy = (((G.view / 3) | 0) - ((pv / 3) | 0)) * BS * .45 * (1 - va);
+    ctx.globalAlpha = va; const sc = .55 + .45 * va; ctx.translate(BS / 2 + dx, BS / 2 + dy); ctx.scale(sc, sc); ctx.translate(-BS / 2, -BS / 2);
+  }
   const gm = mainGeo(), g = L === 3 ? G.view : 0, tint = L === 3 ? tintFor(g) : VIOLET;
   const gameClosed = L === 3 && s.gw[g];
   const myTurn = !s.winner;
@@ -828,6 +907,9 @@ function drawMain(t) {
   const lw = Math.max(1.4, gm.B * .017), mlw = Math.max(2, gm.C * .13);
   for (let b = 0; b < 9; b++) {
     const bi = L === 2 ? b : g * 9 + b, r = gm.board(b);
+    const ent = t - G.startT < 1400 ? easeBack((t - G.startT - 60 - b * 55) / 420) : 1;
+    ctx.save();
+    if (ent < 1) { const [ecx, ecy] = ctr(r); ctx.translate(ecx, ecy); ctx.scale(Math.max(.001, ent), Math.max(.001, ent)); ctx.rotate((1 - ent) * .5); ctx.translate(-ecx, -ecy); ctx.globalAlpha *= clamp(ent); }
     ctx.fillStyle = "#fff"; rr(ctx, r[0], r[1], r[2], r[2], r[2] * .1); ctx.fill();
     ctx.strokeStyle = rgba(mixc(WHITE, tint, .45)); ctx.lineWidth = 1; ctx.stroke();
     hashGrid(ctx, r[0], r[1], r[2], r[2] * .06, lw, "#2A2540");
@@ -844,7 +926,9 @@ function drawMain(t) {
     if (myTurn && !gameClosed && !G.legalBoards.has(bi) && !won) {
       ctx.save(); ctx.fillStyle = "rgba(247,245,252,.55)"; rr(ctx, r[0], r[1], r[2], r[2], r[2] * .1); ctx.fill(); ctx.restore();
     }
+    ctx.restore();
   }
+  thinkingDots(ctx, t);
   // legal zone glow
   if (myTurn) {
     const pc = p === 1 ? PINK : BLUE;
@@ -863,12 +947,28 @@ function drawMain(t) {
   ctx.restore();
 }
 function drawClassic(ctx, t) {
-  const s = G.s, gc = geoClassic(BS);
+  const s = G.s, gc = geoClassic(BS), ent = ease((t - G.startT) / 700);
+  ctx.save(); const sc = .85 + .15 * easeBack((t - G.startT) / 500); ctx.translate(BS / 2, BS / 2); ctx.scale(sc, sc); ctx.translate(-BS / 2, -BS / 2);
+  ctx.globalAlpha = clamp((t - G.startT) / 250);
   ctx.fillStyle = "#fff"; rr(ctx, 2, 2, BS - 4, BS - 4, BS * .07); ctx.fill();
-  ctx.strokeStyle = rgba(mixc(WHITE, VIOLET, .45)); ctx.lineWidth = 2; ctx.stroke();
-  hashGrid(ctx, 0, 0, BS, BS * .07, Math.max(4, BS * .016), "#2A2540");
+  ctx.strokeStyle = rgba(mixc(WHITE, VIOLET, .45)); ctx.lineWidth = 2; ctx.stroke(); ctx.restore();
+  { // grid lines draw themselves in
+    const pad = BS * .07, st = (BS - 2 * pad) / 3, len = (BS - 2 * pad) * ent;
+    ctx.save(); ctx.strokeStyle = "#2A2540"; ctx.lineWidth = Math.max(4, BS * .016); ctx.lineCap = "round"; ctx.beginPath();
+    for (const k of [1, 2]) { ctx.moveTo(pad + k * st, pad); ctx.lineTo(pad + k * st, pad + len); ctx.moveTo(pad, pad + k * st); ctx.lineTo(pad + len, pad + k * st); }
+    ctx.stroke(); ctx.restore();
+  }
   drawBoardCells(ctx, s, 0, c => gc.cell(c), t, Math.max(6, gc.C * .1));
+  thinkingDots(ctx, t);
   if (s.winner && s.winner !== 3) drawWinLine(ctx, t, i => ctr(gc.cell(i)));
+}
+function thinkingDots(ctx, t) {
+  if (!(G.busy && isAI(G.s.turn) && G.pending < 0 && G.legal.length)) return;
+  const k = Math.floor(t / 140), c = COL[G.s.turn];
+  for (let j = 0; j < 4; j++) {
+    const h = (((k - j) * 2654435761) >>> 0) % G.legal.length, r = cellRect(G.legal[h]); if (!r) continue;
+    ctx.save(); ctx.globalAlpha = (1 - j / 4) * .55; ctx.fillStyle = c; ctx.beginPath(); ctx.arc(r[0] + r[2] / 2, r[1] + r[2] / 2, r[2] * (.16 + .1 * (1 - j / 4)), 0, 7); ctx.fill(); ctx.restore();
+  }
 }
 function drawWinLine(ctx, t, centerOf) {
   const s = G.s, lineArr = s.L === 1 ? s.cells : s.bw, l = E.line3(lineArr, 0, s.winner); if (!l) return;
@@ -913,9 +1013,9 @@ function offViewArrow(ctx, t, from, g, prog, label) {
 }
 const cap = s => s[0].toUpperCase() + s.slice(1);
 
-function drawMap(t) {
+function drawMap(t, ctx = mctx, M = MS) {
   if (G.s.L !== 3) return;
-  const ctx = mctx, s = G.s, mg = mapGeo(); ctx.clearRect(0, 0, MS, MS);
+  const s = G.s, mg = mapGeo(M); ctx.clearRect(0, 0, M, M);
   const z = E.zone(s, G.worm), p = s.turn, pc = p === 1 ? PINK : BLUE;
   for (let g = 0; g < 9; g++) {
     const [x, y, T] = mg.game(g), tint = tintFor(g);
@@ -958,30 +1058,83 @@ function drawMap(t) {
   }
 }
 
-// ---- confetti
-let parts = [], fxOn = false;
+// ======================= FX (screen-space particles) =======================
+let parts = [], fxDirty = false;
+const FXCOLS = ["#EC4899", "#8B5CF6", "#3B82F6", "#F9A8D4", "#93C5FD", "#FDE047"];
+function boardPt(p) { const r = board.getBoundingClientRect(); return [r.left + p[0], r.top + p[1]]; }
+function canvasPt(c, p, flip, size) { const r = c.getBoundingClientRect(); return flip ? [r.left + size - p[0], r.top + size - p[1]] : [r.left + p[0], r.top + p[1]]; }
+function sparks(x, y, color, n = 16, speed = 5, size = 3.2) {
+  for (let i = 0; i < n; i++) { const a = Math.random() * 6.283, v = speed * (.35 + Math.random());
+    parts.push({ k: "spark", x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, t0: now(), dur: 450 + Math.random() * 450, c: color, s: size * (.6 + Math.random() * .8) }); }
+}
+function ring(x, y, color, R = 40, w = 4, dur = 520, delay = 0) { parts.push({ k: "ring", x, y, R, w, c: color, t0: now() + delay, dur }); }
+function stars(x, y, n = 8, R = 60) {
+  for (let i = 0; i < n; i++) { const a = i / n * 6.283 + Math.random() * .4, v = R / 24 * (.6 + Math.random() * .7);
+    parts.push({ k: "star", x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 1, t0: now(), dur: 750 + Math.random() * 350, c: FXCOLS[(Math.random() * 3) | 0], s: 5 + Math.random() * 6, rot: Math.random() * 6 }); }
+}
+function orb(p0, p1, color, cb, dur = 560) { parts.push({ k: "orb", p0, p1, c: color, t0: now(), dur, cb, trail: [] }); }
+function vortex(x, y) { for (let i = 0; i < 46; i++) parts.push({ k: "vortex", x, y, a: Math.random() * 6.283, r0: 40 + Math.random() * 80, t0: now() + Math.random() * 260, dur: 650, c: FXCOLS[(Math.random() * 3) | 0], s: 2 + Math.random() * 3 }); }
+function fireworks(n = 6, spread = 2400) {
+  const W = innerWidth, H = innerHeight;
+  for (let i = 0; i < n; i++) setTimeout(() => { const x = W * (.12 + Math.random() * .76), y = H * (.1 + Math.random() * .4);
+    parts.push({ k: "rocket", x, y0: H + 10, y, t0: now(), dur: 450, c: FXCOLS[(Math.random() * FXCOLS.length) | 0] }); SFX.pop(); }, i === 0 ? 0 : Math.random() * spread);
+}
 function confetti(n = 160) {
-  const W = window.innerWidth, H = window.innerHeight, cols = ["#EC4899", "#8B5CF6", "#3B82F6", "#F9A8D4", "#93C5FD", "#FDE047"];
-  for (let i = 0; i < n; i++) parts.push({ x: W / 2 + (Math.random() - .5) * W * .3, y: H * .45, vx: (Math.random() - .5) * 14, vy: -Math.random() * 15 - 6,
-    r: 4 + Math.random() * 6, rot: Math.random() * 6, vr: (Math.random() - .5) * .4, c: cols[(Math.random() * cols.length) | 0], life: 0, sq: Math.random() < .5 });
-  fxOn = true;
+  const W = innerWidth, H = innerHeight;
+  for (let i = 0; i < n; i++) parts.push({ k: "conf", x: W / 2 + (Math.random() - .5) * W * .3, y: H * .45, vx: (Math.random() - .5) * 14, vy: -Math.random() * 15 - 6,
+    r: 4 + Math.random() * 6, rot: Math.random() * 6, vr: (Math.random() - .5) * .4, c: FXCOLS[(Math.random() * FXCOLS.length) | 0], life: 0, sq: Math.random() < .5 });
 }
+function starPath(ctx, s) { ctx.beginPath(); for (let i = 0; i < 10; i++) { const r = i % 2 ? s * .45 : s, a = i * Math.PI / 5 - Math.PI / 2; ctx.lineTo(Math.cos(a) * r, Math.sin(a) * r); } ctx.closePath(); }
 function drawFx() {
-  if (!fxOn) return;
-  const W = window.innerWidth, H = window.innerHeight; fxctx.clearRect(0, 0, W, H);
-  parts = parts.filter(p => p.y < H + 40 && p.life < 400);
+  const W = innerWidth, H = innerHeight, ctx = fxctx;
+  if (!parts.length) { if (fxDirty) { ctx.clearRect(0, 0, W, H); fxDirty = false; } return; }
+  fxDirty = true; ctx.clearRect(0, 0, W, H);
+  const t = now(), keep = [];
   for (const p of parts) {
-    p.vy += .38; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life++;
-    fxctx.save(); fxctx.translate(p.x, p.y); fxctx.rotate(p.rot); fxctx.fillStyle = p.c;
-    if (p.sq) fxctx.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); else { fxctx.beginPath(); fxctx.arc(0, 0, p.r / 2.4, 0, 7); fxctx.fill(); }
-    fxctx.restore();
+    if (p.k === "conf") {
+      p.vy += .38; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.rot += p.vr; p.life++;
+      if (p.y > H + 40 || p.life > 400) continue;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.c;
+      if (p.sq) ctx.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); else { ctx.beginPath(); ctx.arc(0, 0, p.r / 2.4, 0, 7); ctx.fill(); }
+      ctx.restore(); keep.push(p); continue;
+    }
+    const u = (t - p.t0) / p.dur;
+    if (u < 0) { keep.push(p); continue; }
+    if (u >= 1) {
+      if (p.k === "orb" && p.cb) p.cb();
+      if (p.k === "rocket") { sparks(p.x, p.y, p.c, 50, 7.5, 3.4); ring(p.x, p.y, p.c, 80, 3, 650); stars(p.x, p.y, 5, 50); }
+      continue;
+    }
+    keep.push(p);
+    if (p.k === "spark") { p.x += p.vx; p.y += p.vy; p.vx *= .94; p.vy = p.vy * .94 + .12; ctx.globalAlpha = 1 - u; ctx.fillStyle = p.c; ctx.beginPath(); ctx.arc(p.x, p.y, p.s * (1 - u * .5), 0, 7); ctx.fill(); }
+    else if (p.k === "ring") { ctx.globalAlpha = (1 - u) * .9; ctx.strokeStyle = p.c; ctx.lineWidth = p.w * (1 - u) + .5; ctx.beginPath(); ctx.arc(p.x, p.y, p.R * ease(u) + 4, 0, 7); ctx.stroke(); }
+    else if (p.k === "star") { p.x += p.vx; p.y += p.vy; p.vy += .06; p.rot += .09; ctx.globalAlpha = 1 - u; ctx.fillStyle = p.c; ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); starPath(ctx, p.s * (1 - u * .4)); ctx.fill(); ctx.restore(); }
+    else if (p.k === "orb") {
+      const e = ease(u), [x0, y0] = p.p0, [x1, y1] = p.p1, cx = (x0 + x1) / 2 - (y1 - y0) * .3, cy = (y0 + y1) / 2 + (x1 - x0) * .3;
+      const x = (1 - e) ** 2 * x0 + 2 * (1 - e) * e * cx + e * e * x1, y = (1 - e) ** 2 * y0 + 2 * (1 - e) * e * cy + e * e * y1;
+      p.trail.push([x, y]); if (p.trail.length > 16) p.trail.shift();
+      p.trail.forEach(([tx, ty], i) => { ctx.globalAlpha = i / p.trail.length * .55; ctx.fillStyle = p.c; ctx.beginPath(); ctx.arc(tx, ty, 2 + i * .5, 0, 7); ctx.fill(); });
+      ctx.globalAlpha = 1; ctx.shadowColor = p.c; ctx.shadowBlur = 20; ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(x, y, 8, 0, 7); ctx.fill(); ctx.shadowBlur = 0;
+      ctx.fillStyle = p.c; ctx.beginPath(); ctx.arc(x, y, 5, 0, 7); ctx.fill();
+    }
+    else if (p.k === "vortex") { const r = p.r0 * (1 - ease(u)), a = p.a + u * 8; ctx.globalAlpha = Math.min(1, u * 3) * (1 - u * .4); ctx.fillStyle = p.c; ctx.beginPath(); ctx.arc(p.x + Math.cos(a) * r, p.y + Math.sin(a) * r, p.s, 0, 7); ctx.fill(); }
+    else if (p.k === "rocket") { const y = p.y0 + (p.y - p.y0) * ease(u); ctx.globalAlpha = 1; ctx.fillStyle = p.c; ctx.beginPath(); ctx.arc(p.x, y, 3.2, 0, 7); ctx.fill(); ctx.globalAlpha = .35; ctx.fillRect(p.x - 1.2, y, 2.4, 34); }
   }
-  if (!parts.length) { fxOn = false; fxctx.clearRect(0, 0, W, H); }
+  ctx.globalAlpha = 1; parts = keep;
 }
+function stamp(text, color, flip) {
+  const el = $("stamp"); el.textContent = text; el.style.background = color;
+  $("flipWrap").classList.toggle("flip", !!flip);
+  el.classList.remove("go"); void el.offsetWidth; el.classList.add("go");
+}
+function shake(big) { const st = $("stage"); st.classList.remove("shake", "shake-big"); void st.offsetWidth; st.classList.add(big ? "shake-big" : "shake"); }
 
 function loop() {
   const t = now();
-  if (G && $("game").classList.contains("active")) { drawMain(t); drawMap(t); }
+  if (G && $("game").classList.contains("active")) {
+    drawMain(t);
+    if (isFace()) { for (const P of PANELS) drawMap(t, P.mctx, PMS); } else drawMap(t);
+  }
   drawFx();
   requestAnimationFrame(loop);
 }
@@ -1011,6 +1164,12 @@ function updateHUD() {
     w.innerHTML = [1, 2].map(q => `<span class="w" style="color:${COL[q]}">${q === 1 ? "X" : "O"} ${planetSVG(COL[q]).repeat(s.worm[q])}${s.worm[q] === 0 ? "—" : ""}</span>`).join("");
   } else $("worms").classList.add("hidden");
   updateActions();
+  const gm = $("game"); gm.classList.toggle("oturn", p === 2 && !s.winner);
+  document.querySelector(".tglow.x").classList.toggle("on", p === 1 && !s.winner);
+  document.querySelector(".tglow.o").classList.toggle("on", p === 2 && !s.winner);
+  if (G.shownTurn !== p) { G.shownTurn = p; pill.classList.remove("bump"); void pill.offsetWidth; pill.classList.add("bump"); }
+  $("faceBtn").classList.toggle("hidden", G.cfg.opp !== "pass");
+  if (isFace()) renderPanels();
 }
 function endLine() {
   const w = G.s.winner; if (w === 3) return "It's a <b>tie</b>. Nobody could get three in a row.";
@@ -1042,7 +1201,11 @@ function updateActions() {
       : `<span class="arrow">?</span><span>Tap a square to <b>preview</b> where it sends ${mk(3 - p)}.</span>`;
     return;
   }
-  const pi = G.pinfo, op = 3 - p; let txt = "", tag = "";
+  info.innerHTML = `<span class="arrow">→</span><span>${isAI(p) ? "AI plays here. " : ""}${sendLine()}</span>`;
+}
+function sendLine() {
+  const s = G.s, p = s.turn, pi = G.pinfo, op = 3 - p; let txt = "", tag = "";
+  if (!pi) return "";
   if (pi.t.winner === p) tag = `<span class="win">WINS THE MATCH</span>`;
   else if (pi.ev.game >= 0) tag = `<span class="win">WINS A GAME</span>`;
   else if (pi.ev.board >= 0) tag = `<span class="win">WINS BOARD</span>`;
@@ -1051,7 +1214,47 @@ function updateActions() {
   else if (pi.z.kind === "board") txt = `Sends ${mk(op)} to <b>${POS[(pi.z.bi / 9) | 0]}</b> game → <b>${POS[pi.z.bi % 9]}</b> board`;
   else if (pi.z.kind === "game") txt = `Sends ${mk(op)} to any board in the <b>${POS[pi.z.g]}</b> game`;
   else txt = `Gives ${mk(op)} a <b>free move anywhere</b>`;
-  info.innerHTML = `<span class="arrow">→</span><span>${isAI(p) ? "AI plays here. " : ""}${txt} ${tag}</span>`;
+  return `${txt} ${tag}`;
+}
+// ---- face-to-face panels (top = O, bottom = X)
+const PANELS = [];
+function buildPanels() {
+  for (const [id, owner, flip] of [["pTop", 2, true], ["pBot", 1, false]]) {
+    const el = $(id);
+    el.innerHTML = `<div class="pp"><canvas class="pmap"></canvas><div class="pp-col"><div class="pp-status"></div>
+      <div class="pp-btns"><button class="worm-btn pworm"></button><button class="confirm-btn pconf">CONFIRM</button></div></div></div>`;
+    const P = { el, owner, flip, map: el.querySelector(".pmap"), status: el.querySelector(".pp-status"), conf: el.querySelector(".pconf"), worm: el.querySelector(".pworm") };
+    P.mctx = P.map.getContext("2d");
+    P.conf.onclick = () => { SFX.init(); if (!G) return; if (G.s.winner) return rematch(); if (G.s.turn === owner) confirmMove(); };
+    P.worm.onclick = () => { if (G && G.s.turn === owner) toggleWorm(); };
+    P.map.addEventListener("pointerup", ev => { const r = P.map.getBoundingClientRect(); let x = ev.clientX - r.left, y = ev.clientY - r.top; if (flip) { x = PMS - x; y = PMS - y; } mapTapAt(x, y, PMS); });
+    PANELS.push(P);
+  }
+}
+function renderPanels() {
+  const s = G.s, p = s.turn;
+  for (const P of PANELS) {
+    const mine = !s.winner && p === P.owner, col = COL[P.owner];
+    P.el.classList.toggle("active", mine); P.el.classList.toggle("idle", !mine && !s.winner);
+    P.el.style.setProperty("--pc", col); P.el.style.setProperty("--pcs", col + "55");
+    P.map.classList.toggle("hidden", s.L !== 3);
+    const who = `<span class="who" style="background:${col}">${P.owner === 1 ? "X" : "O"}</span>`;
+    let html;
+    if (s.winner) html = who + endLine();
+    else if (!mine) html = who + `Waiting. <b>${p === 1 ? "X" : "O"}</b> is playing…`;
+    else if (s.L === 1) html = who + "<b>Your turn!</b> Tap a square.";
+    else if (G.pending >= 0) html = who + sendLine();
+    else html = who + "<b>Your turn.</b> " + zoneText(s, E.zone(s, G.worm));
+    P.status.innerHTML = html;
+    P.conf.classList.toggle("hidden", s.L === 1 && !s.winner);
+    if (s.winner) { P.conf.disabled = false; P.conf.textContent = "REMATCH"; P.conf.classList.remove("ready"); }
+    else { P.conf.textContent = "CONFIRM"; P.conf.disabled = !(mine && G.pending >= 0); P.conf.classList.toggle("ready", !P.conf.disabled); }
+    P.worm.classList.toggle("hidden", s.L !== 3 || !!s.winner);
+    if (s.L === 3) {
+      P.worm.disabled = !mine || s.worm[P.owner] <= 0; P.worm.classList.toggle("armed", mine && G.worm);
+      P.worm.innerHTML = `${planetSVG(col, 22)}<span>${mine && G.worm ? "Cancel" : `${s.worm[P.owner]} left`}</span>`;
+    }
+  }
 }
 let toastTimer = 0;
 function toast(text, color) {
@@ -1067,7 +1270,7 @@ function setPending(cell) {
   updateActions();
 }
 function setView(g, instant) {
-  if (G.view === g) return; G.view = g; G.viewT = instant ? -1e9 : now();
+  if (G.view === g) return; G.prevView = G.view; G.view = g; G.viewT = instant ? -1e9 : now();
 }
 function autoView() {
   if (G.s.L !== 3 || G.s.winner) return;
@@ -1076,18 +1279,41 @@ function autoView() {
   else if (z.kind === "game") setView(z.g);
   else if (!G.legalGames.has(G.view)) setView([...G.legalGames][0] ?? 4);
 }
+function sendTarget(s) {
+  // screen point the "send" orb should fly to, after a move
+  if (s.winner || s.L === 1) return null;
+  const z = E.zone(s, false);
+  if (s.L === 2) return z.kind === "board" ? boardPt(ctr(mainGeo().board(z.bi))) : null;
+  if (z.kind === "board" && ((z.bi / 9) | 0) === G.view) return boardPt(ctr(mainGeo().board(z.bi % 9)));
+  let mapEl = mapC, M = MS, flip = false;
+  if (isFace()) { const P = PANELS.find(q => q.owner === s.turn); mapEl = P.map; M = PMS; flip = P.flip; }
+  const mg = mapGeo(M), r = z.kind === "board" ? mg.board(z.bi) : z.kind === "game" ? mg.game(z.g) : null;
+  return r ? canvasPt(mapEl, ctr(r), flip, M) : null;
+}
 function commit(cell) {
-  const s = G.s, p = s.turn;
-  if (G.worm) { s.worm[p]--; SFX.wormhole(); }
+  const s = G.s, p = s.turn, pc = COL[p];
+  const cr = cellRect(cell), cpt = cr ? boardPt(ctr(cr)) : null;
+  if (G.worm) { s.worm[p]--; SFX.wormhole(); if (cpt) vortex(cpt[0], cpt[1]); stamp("WORMHOLE!", "#8B5CF6", isFace() && p === 2); }
   const ev = E.play(s, cell);
   G.worm = false; G.lastT = now(); G.pending = -1; G.pinfo = null;
   SFX.place(p); haptic("medium");
+  if (cpt) { sparks(cpt[0], cpt[1], pc, 16, 4.5, 3); ring(cpt[0], cpt[1], pc, cr[2] * .9, 3, 420); }
   const vsAI = G.cfg.opp === "ai", good = !vsAI || p === G.cfg.human;
+  // the send: an orb flies to where the opponent must play
+  const tgt = sendTarget(s);
+  if (cpt && tgt) setTimeout(() => orb(cpt, tgt, COL[3 - p], () => { ring(tgt[0], tgt[1], COL[3 - p], 34, 3, 500); sparks(tgt[0], tgt[1], COL[3 - p], 10, 3, 2.5); SFX.arrive(); }, 520), 140);
   let big = false;
+  const flipStamp = isFace() && p === 2;
   if (ev.game >= 0) { G.gameFx[ev.game] = now(); big = true; haptic("max"); setTimeout(() => { good ? SFX.gameWin() : SFX.boardLost(); }, 120);
-    toast(`${pname(p, true)} won the ${POS[ev.game]} game!`, COL[p]); if (good) confetti(60); }
+    toast(`${pname(p, true)} won the ${POS[ev.game]} game!`, COL[p]);
+    const bc = boardPt([BS / 2, BS / 2]); ring(bc[0], bc[1], pc, BS * .7, 6, 800); ring(bc[0], bc[1], "#FDE047", BS * .5, 4, 700, 120);
+    sparks(bc[0], bc[1], pc, 70, 9, 4); stars(bc[0], bc[1], 16, 110); if (good) { fireworks(3, 900); confetti(70); }
+    stamp("GAME WON!", pc, flipStamp); shake(true); }
   if (ev.board >= 0) { G.boardFx[ev.board] = now(); if (!big) { haptic("heavy"); setTimeout(() => { good ? SFX.boardWin() : SFX.boardLost(); }, 120);
-    toast(`${pname(p, true)} won ${s.L === 3 ? "a" : "the " + POS[ev.board]} board!`, COL[p]); } }
+    toast(`${pname(p, true)} won ${s.L === 3 ? "a" : "the " + POS[ev.board]} board!`, COL[p]);
+    const br = boardRectMain(ev.board);
+    if (br) { const bc = boardPt(ctr(br)); ring(bc[0], bc[1], pc, br[2] * .95, 5, 650); sparks(bc[0], bc[1], pc, 36, 6.5, 3.4); stars(bc[0], bc[1], 8, 70); }
+    stamp(s.winner ? "" : "BOARD!", pc, flipStamp); shake(false); } }
   if (ev.boardTie >= 0) { G.boardFx[ev.boardTie] = now(); if (!big) { setTimeout(() => SFX.boardTie(), 120); toast("Board tied: it counts for nobody", "#8E87A6"); } }
   if (ev.gameTie >= 0) { G.gameFx[ev.gameTie] = now(); toast(`The ${POS[ev.gameTie]} game is tied`, "#8E87A6"); }
   refreshLegal(); save();
@@ -1120,12 +1346,13 @@ function endGame() {
   const s = G.s, w = s.winner; G.endT = now(); G.over = true; updateHUD(); save();
   const vsAI = G.cfg.opp === "ai", humanWon = !vsAI || w === G.cfg.human;
   setTimeout(() => {
-    if (w === 3) SFX.tieTune();
-    else if (humanWon) { SFX.fanfare(); confetti(220); setTimeout(() => confetti(140), 900); }
-    else SFX.sadTrombone();
+    if (w === 3) { SFX.tieTune(); stamp("TIE!", "#8E87A6"); }
+    else if (humanWon) { SFX.fanfare(); confetti(220); setTimeout(() => confetti(160), 900); fireworks(9, 2600);
+      stamp(vsAI ? "YOU WIN!" : `${w === 1 ? "X" : "O"} WINS!`, COL[w], isFace() && w === 2); shake(true); }
+    else { SFX.sadTrombone(); stamp("AI WINS", "#6B6880"); const st = $("stage"); st.classList.add("sad"); setTimeout(() => st.classList.remove("sad"), 2600); shake(false); }
   }, 350);
   haptic("max");
-  setTimeout(() => showEnd(), 1300);
+  setTimeout(() => showEnd(), 2300);
 }
 function showEnd() {
   if (!G) return;
@@ -1175,20 +1402,28 @@ function confirmMove() {
   if (G.pending < 0 || G.busy || isAI(G.s.turn)) return;
   commit(G.pending);
 }
-function mapTap(ev) {
+function mapTap(ev) { const rect = mapC.getBoundingClientRect(); mapTapAt(ev.clientX - rect.left, ev.clientY - rect.top, MS); }
+function mapTapAt(x, y, M) {
   SFX.init(); if (!G || G.s.L !== 3) return;
-  const rect = mapC.getBoundingClientRect(), x = ev.clientX - rect.left, y = ev.clientY - rect.top, mg = mapGeo();
+  const mg = mapGeo(M);
   for (let g = 0; g < 9; g++) { const [gx, gy, T] = mg.game(g); if (x >= gx - 2 && x < gx + T + 2 && y >= gy - 2 && y < gy + T + 2) {
     if (g !== G.view) { setView(g); SFX.tap(); haptic(); if (G.pending >= 0 && (G.pending / 81 | 0) !== g) { /* keep pending, just look */ } } return; } }
 }
 board.addEventListener("pointerup", boardTap);
 mapC.addEventListener("pointerup", mapTap);
 $("confirmBtn").onclick = confirmMove;
-$("wormBtn").onclick = () => {
-  SFX.init(); if (!G || G.busy || G.s.winner) return; const p = G.s.turn; if (G.s.worm[p] <= 0) return;
+function toggleWorm() {
+  SFX.init(); if (!G || G.busy || G.s.winner || isAI(G.s.turn)) return; const p = G.s.turn; if (G.s.worm[p] <= 0) return;
   G.worm = !G.worm; setPending(-1); refreshLegal();
-  if (G.worm) { SFX.wormhole(); haptic("heavy"); toast("Wormhole open: play anywhere!", "#8B5CF6"); } else SFX.tap();
-  updateHUD();
+  if (G.worm) { SFX.wormhole(); haptic("heavy"); toast("Wormhole open: play anywhere!", "#8B5CF6"); const c = boardPt([BS / 2, BS / 2]); vortex(c[0], c[1]); } else SFX.tap();
+  autoView(); updateHUD();
+}
+$("wormBtn").onclick = toggleWorm;
+$("faceBtn").onclick = () => {
+  SFX.init(); if (!G || G.cfg.opp !== "pass") return;
+  G.cfg.face = !G.cfg.face; prefs.face = G.cfg.face; savePrefs(); save(); SFX.whoosh();
+  layout(); requestAnimationFrame(() => { layout(); updateHUD(); });
+  toast(G.cfg.face ? "Face to face: O sits at the top" : "Same-side layout", "#8B5CF6");
 };
 document.addEventListener("gesturestart", e => e.preventDefault());
 document.addEventListener("pointerdown", e => { if (e.target.closest("button")) haptic("light"); }, true);
@@ -1201,13 +1436,21 @@ function startGame(cfg, saved) {
   if (!saved) save();
   $("gTitle").textContent = MODE_NAME[cfg.L];
   $("gSub").textContent = cfg.opp === "ai" ? `vs AI · ${DIFF_NAME[cfg.diff]}` : "Pass & Play";
-  show("game"); requestAnimationFrame(() => { layout(); autoView(); G.viewT = -1e9; updateHUD(); maybeAI(); });
+  show("game"); $("game").classList.toggle("face", isFace());
+  requestAnimationFrame(() => { layout(); autoView(); G.viewT = -1e9; G.startT = now(); updateHUD(); maybeAI(); });
 }
 function goHome() { G = null; workerCb = null; if (worker) { worker.terminate(); makeWorker(); } refreshHome(); show("home"); }
 $("homeBtn").onclick = () => { SFX.init(); SFX.tap(); goHome(); };
 
 function openSheet(html) { $("sheet").innerHTML = html; $("modal").classList.remove("hidden"); }
-function closeSheet() { $("modal").classList.add("hidden"); }
+function closeSheet() { const v = $("tutVid"); if (v) v.pause(); $("modal").classList.add("hidden"); }
+function showTutorial() {
+  openSheet(`<h2>Video tutorial</h2><p style="color:var(--grey);margin-top:6px">Three minutes: tic-tac-toe → Ultimate → Cubed³, with pause-and-guess moments. Turn your phone sideways or tap full screen for the best view.</p>
+    <video id="tutVid" src="tutorial.mp4" poster="tutorial-poster.jpg" controls playsinline preload="metadata"></video>
+    <div class="row"><button class="pri" id="tOk">DONE</button></div>`);
+  $("tOk").onclick = closeSheet;
+  const v = $("tutVid"); v.play().catch(() => {});
+}
 $("modal").addEventListener("click", e => { if (e.target.id === "modal" && !(G && G.over && false)) closeSheet(); });
 
 function soundIcon() {
@@ -1234,7 +1477,11 @@ const RULES = {
       <h3>Wormholes</h3><p>Each player gets 3. Tap <b>Wormhole</b> to ignore the Send and play any open square. Your move still sends your opponent like normal.</p>
       <h3>In this app</h3><p>The big board is the game you're sent to. The <b>map</b> shows the whole sheet; tap it to look at other games. Tap a square to preview the send line, then <b>Confirm</b>.</p>`,
 };
-function showRules(L) { openSheet(RULES[L] + `<div class="row"><button class="pri" id="rOk">GOT IT</button></div>`); $("rOk").onclick = closeSheet; }
+function showRules(L) {
+  const tut = L > 1 ? `<button class="tut-card" id="rTut" style="margin:0 0 14px"><span class="play">▶</span><div><b>Watch the video tutorial</b><span>3 min · Ultimate &amp; Cubed³</span></div></button>` : "";
+  openSheet(tut + RULES[L] + `<div class="row"><button class="pri" id="rOk">GOT IT</button></div>`); $("rOk").onclick = closeSheet;
+  if (L > 1) $("rTut").onclick = () => { SFX.tap(); showTutorial(); };
+}
 $("rulesBtn").onclick = () => { SFX.init(); showRules(prefs.L); };
 function vibeLabel() { $("vibeBtn").textContent = prefs.vibe ? "Vibration: MAX · tap to test" : "Vibration: off"; }
 $("vibeBtn").onclick = () => { prefs.vibe = !prefs.vibe; savePrefs(); vibeLabel(); if (prefs.vibe) haptic("max"); };
@@ -1248,6 +1495,8 @@ function refreshHome() {
   for (const b of document.querySelectorAll("#diffs button")) b.classList.toggle("on", +b.dataset.d === prefs.diff);
   for (const b of document.querySelectorAll("#sideSeg button")) b.classList.toggle("on", +b.dataset.v === prefs.side);
   $("aiOpts").classList.toggle("hidden", prefs.opp !== "ai");
+  $("layoutRow").classList.toggle("hidden", prefs.opp !== "pass");
+  for (const b of document.querySelectorAll("#layoutSeg button")) b.classList.toggle("on", (b.dataset.v === "face") === !!prefs.face);
   $("diffDesc").textContent = DIFF_DESC[prefs.diff];
   $("rulesBtn").textContent = `How to play ${MODE_NAME[prefs.L]}`;
   const sv = loadSave();
@@ -1257,15 +1506,17 @@ function refreshHome() {
 document.querySelectorAll("#modes .mode").forEach(b => b.onclick = () => { SFX.init(); SFX.tap(); haptic(); prefs.L = +b.dataset.l; savePrefs(); refreshHome(); });
 document.querySelectorAll("#oppSeg button").forEach(b => b.onclick = () => { SFX.init(); SFX.tap(); prefs.opp = b.dataset.v; savePrefs(); refreshHome(); });
 document.querySelectorAll("#diffs button").forEach(b => b.onclick = () => { SFX.init(); SFX.tap(); haptic(); prefs.diff = +b.dataset.d; savePrefs(); refreshHome(); });
+document.querySelectorAll("#layoutSeg button").forEach(b => b.onclick = () => { SFX.init(); SFX.tap(); prefs.face = b.dataset.v === "face"; savePrefs(); refreshHome(); });
+$("tutBtn").onclick = () => { SFX.init(); SFX.tap(); showTutorial(); };
 document.querySelectorAll("#sideSeg button").forEach(b => b.onclick = () => { SFX.init(); SFX.tap(); prefs.side = +b.dataset.v; savePrefs(); refreshHome(); });
 $("playBtn").onclick = () => {
   SFX.init(); SFX.select(1); haptic();
-  startGame({ L: prefs.L, opp: prefs.opp, diff: prefs.diff, human: prefs.opp === "ai" ? prefs.side : 1 });
+  startGame({ L: prefs.L, opp: prefs.opp, diff: prefs.diff, human: prefs.opp === "ai" ? prefs.side : 1, face: prefs.opp === "pass" && !!prefs.face });
 };
 $("continueBtn").onclick = () => { SFX.init(); SFX.tap(); const sv = loadSave(); if (sv) startGame(sv.cfg, sv); };
 
 // ---- boot
-soundIcon(); refreshHome(); makeWorker(); requestAnimationFrame(loop);
+buildPanels(); soundIcon(); refreshHome(); makeWorker(); sizeCanvas(fx, fxctx, window.innerWidth, window.innerHeight); requestAnimationFrame(loop);
 setTimeout(() => $("splash").classList.add("out"), 1500);
 setTimeout(() => $("splash").remove(), 2100);
 window.__ttt = { get G() { return G; }, E, startGame, commit, setPending, confirmMove };
