@@ -207,7 +207,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .floaters i{position:absolute;font-family:"Archivo Black";font-style:normal;opacity:.09;animation:drift linear infinite}
 @keyframes drift{0%{transform:translateY(110vh) rotate(0)}100%{transform:translateY(-20vh) rotate(360deg)}}
 .home-wrap{position:relative;z-index:1}
-.big-btn{position:relative;overflow:hidden}
+.big-btn{position:relative;overflow:hidden;flex:none;min-height:60px;line-height:1.1}
+.home-wrap>*{flex-shrink:0}
 .big-btn:after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);animation:shine 2.8s ease-in-out infinite}
 @keyframes shine{0%,55%{left:-60%}100%{left:130%}}
 .mode.on .ico{animation:wiggle .5s}
@@ -256,7 +257,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
     <button id="tutBtn" class="tut-card"><span class="play">▶</span><div><b>Watch the tutorial</b><span>3-minute video: from tic-tac-toe to Cubed³</span></div></button>
     <button id="rulesBtn" class="link-btn">How to play this mode</button>
     <button id="vibeBtn" class="link-btn" style="color:var(--grey);font-size:13.5px;padding:2px"></button>
-    <div class="brand"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE <span class="ver">· v2.0</span></div>
+    <div class="brand"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE <span class="ver">· v2.1</span></div>
   </div>
 </section>
 
@@ -286,7 +287,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
       <button id="wormBtn" class="worm-btn hidden"></button>
       <button id="confirmBtn" class="confirm-btn" disabled>CONFIRM</button>
     </div>
-    <div class="gfoot"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE · v2.0</div>
+    <div class="gfoot"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE · v2.1</div>
   </div>
   <div id="pBot" class="ppanel bot"></div>
 </section>
@@ -545,7 +546,7 @@ function ENGINE() {
 <script>
 "use strict";
 const E = ENGINE();
-const VERSION = "v2.0";
+const VERSION = "v2.1";
 const $ = id => document.getElementById(id);
 const POS = ["top-left", "top-middle", "top-right", "middle-left", "centre", "middle-right", "bottom-left", "bottom-middle", "bottom-right"];
 const COL = { 1: "#EC4899", 2: "#3B82F6" };
