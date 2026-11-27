@@ -213,6 +213,79 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 @keyframes shine{0%,55%{left:-60%}100%{left:130%}}
 .mode.on .ico{animation:wiggle .5s}
 @keyframes wiggle{30%{transform:rotate(-8deg) scale(1.08)}60%{transform:rotate(6deg)}}
+
+/* ---------- v3: online ---------- */
+.seg button{font-size:14.5px}
+.big-btn.off{filter:grayscale(.7);opacity:.65}
+.srv{display:flex;align-items:center;gap:9px;background:#fff;border-radius:14px;padding:10px 14px;font-size:14px;font-weight:600;text-align:left;box-shadow:0 1px 0 var(--line)}
+.srv .dot{width:11px;height:11px;border-radius:50%;flex:none;background:#B9B3CC}
+.srv.online .dot{background:#22C55E;box-shadow:0 0 0 4px #22C55E33;animation:breathe 2s infinite}
+.srv.offline .dot{background:#EF4444}.srv.offline{color:var(--grey)}
+.srv.checking .dot{background:#F59E0B;animation:breathe 1s infinite}
+.oncard{background:#fff;border-radius:18px;padding:14px;box-shadow:0 1px 0 var(--line);display:flex;flex-direction:column;gap:6px}
+.oncard b{font-size:17px;font-weight:800}.oncard span{color:var(--grey);font-size:14px;line-height:1.35}
+.btn2{display:flex;gap:8px}.btn2 button{flex:1;padding:12px 6px;border-radius:14px;font-weight:800;font-size:14px;background:#fff;box-shadow:0 1px 0 var(--line)}
+.oncard .btn2 button{background:var(--soft)}.btn2 button.pri{background:var(--grad);color:#fff}
+.me-card{display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:11px 14px;text-align:left;box-shadow:0 1px 0 var(--line),0 6px 20px rgba(80,50,160,.06)}
+.me-card .mi{flex:1;min-width:0}.me-card .mi b{display:block;font-size:17px;font-weight:800}
+.me-card .mi span{display:flex;align-items:center;gap:6px;font-size:13.5px;color:var(--grey);margin-top:2px}.me-card .mi span b{display:inline;font-size:13.5px;color:var(--ink)}
+.me-card .mi small{display:block;color:var(--grey);font-size:12px;margin-top:2px}.chev2{font-size:26px;color:var(--grey)}
+.avatar{display:inline-grid;place-items:center;border-radius:50%;flex:none;line-height:1}
+.tier{display:inline-block;padding:1px 8px;border-radius:99px;font-size:11.5px;font-weight:800;color:var(--tc);background:color-mix(in srgb,var(--tc) 14%,white);white-space:nowrap}
+.vsbar{display:flex;align-items:center;gap:6px;padding:2px 12px 4px;flex:none}
+.vp{flex:1;display:flex;align-items:center;gap:7px;background:#fff;border-radius:14px;padding:5px 8px;min-width:0;box-shadow:0 1px 0 var(--line);border:2px solid transparent;transition:border-color .3s}
+.vp.act{border-color:var(--pc)}.vp .vn{flex:1;min-width:0;line-height:1.1}.vp .vn b{display:block;font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vp .vn span{font-size:11.5px;color:var(--grey);font-weight:700}.vs{font-family:"Archivo Black";font-size:12px;color:var(--grey)}
+.vclock{font-family:"Archivo Black";font-size:14px;color:var(--pc);font-variant-numeric:tabular-nums}.vclock.low{color:#EF4444;animation:breathe .6s infinite}
+.netbanner{margin:0 12px 4px;padding:7px 12px;border-radius:12px;background:#FEF3C7;color:#92400E;font-weight:700;font-size:13.5px;text-align:center}
+.sheet .sub2{color:var(--grey);font-size:14.5px;line-height:1.4}
+.fld{display:block;margin-top:12px}.fld span{display:block;font-size:12.5px;font-weight:800;color:var(--violet);letter-spacing:.04em;margin-bottom:5px}
+.fld input,.codein{width:100%;font:inherit;font-size:16px;padding:13px 14px;border-radius:14px;border:2px solid var(--line);background:#fff;-webkit-user-select:text;user-select:text}
+.fld input:focus,.codein:focus{outline:none;border-color:var(--violet)}
+.codein{margin-top:14px;text-align:center;font-family:"Archivo Black";font-size:34px;letter-spacing:.5em;padding:12px 0 12px .5em}
+.codein.six{font-size:28px;letter-spacing:.35em}
+.ferr{color:#DB2777;font-weight:700;font-size:14px;min-height:20px;margin-top:8px}
+.auth{text-align:left}.auth h2{margin-top:10px}.afoot{text-align:center;margin-top:12px;font-size:14px;color:var(--grey)}
+.afoot a,.sheet a{color:var(--violet);font-weight:800;cursor:pointer}
+.sheet button.danger{background:#FDE7EF;color:#BE185D}
+.search{display:flex;flex-direction:column;gap:6px}
+.radar{position:relative;width:150px;height:150px;margin:6px auto 10px;display:grid;place-items:center}
+.radar span{position:absolute;inset:0;border-radius:50%;border:3px solid var(--violet);opacity:0;animation:ping 2.4s ease-out infinite}
+.radar span:nth-child(2){animation-delay:.8s;border-color:var(--pink)}.radar span:nth-child(3){animation-delay:1.6s;border-color:var(--blue)}
+.radar b{width:84px;height:84px;border-radius:50%;background:var(--grad);display:grid;place-items:center;color:#fff;font-family:"Archivo Black";font-size:14px;box-shadow:0 10px 26px rgba(139,92,246,.4);animation:breathe 1.6s infinite}
+@keyframes ping{0%{transform:scale(.45);opacity:.9}100%{transform:scale(1.15);opacity:0}}
+.sheet .sub{text-align:center;color:var(--grey);font-weight:600}
+.codebox{display:flex;justify-content:center;gap:10px;margin:14px 0}
+.codebox span{width:62px;height:78px;border-radius:18px;background:var(--grad);color:#fff;display:grid;place-items:center;font-family:"Archivo Black";font-size:40px;box-shadow:0 10px 24px rgba(139,92,246,.35);animation:pop .5s cubic-bezier(.2,1.6,.4,1) both}
+.codebox span:nth-child(2){animation-delay:.08s}.codebox span:nth-child(3){animation-delay:.16s}.codebox span:nth-child(4){animation-delay:.24s}
+.waiting .dots:after{content:"";animation:dots 1.2s steps(4) infinite}
+.ratecard{display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:12px 16px;margin-top:14px;text-align:left;box-shadow:0 1px 0 var(--line)}
+.ratecard div:first-child{flex:1}.ratecard span{display:block;font-size:12.5px;color:var(--grey);font-weight:800}.ratecard b{font-size:20px;font-family:"Archivo Black"}
+.delta{font-family:"Archivo Black";font-size:26px;animation:pop .6s .3s cubic-bezier(.2,1.6,.4,1) both}.delta.up{color:#16A34A}.delta.down{color:#DC2626}
+.prof .phead{display:flex;align-items:center;gap:14px}.prof h3{margin-top:18px}
+.mstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.ms{background:#fff;border-radius:16px;padding:10px 8px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;box-shadow:0 1px 0 var(--line)}
+.ms span{font-size:12px;font-weight:800;color:var(--grey)}.ms b{font-family:"Archivo Black";font-size:22px}.ms small{font-size:11px;color:var(--grey)}
+.recent{display:flex;flex-direction:column;gap:6px}
+.rg{display:flex;align-items:center;gap:9px;background:#fff;border-radius:14px;padding:7px 10px}
+.rg .res{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-weight:900;color:#fff;font-size:13px;flex:none}
+.res.W{background:#22C55E}.res.L{background:#EF4444}.res.D{background:#9A94AE}
+.rg .rn{flex:1;font-weight:700;font-size:14px;min-width:0}.rg .rn small{display:block;font-weight:500;color:var(--grey);font-size:12px}
+.rd{font-weight:900;font-size:14px}.rd.up{color:#16A34A}.rd.down{color:#DC2626}
+.swatches{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.sw{width:34px;height:34px;border-radius:50%;box-shadow:0 1px 0 var(--line)}
+.sw.on{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--ink)}
+.avpick{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-top:12px}
+.avpick .av{aspect-ratio:1;border-radius:10px;background:#fff;font-size:20px;display:grid;place-items:center}.avpick .av.on{background:var(--soft);box-shadow:inset 0 0 0 2px var(--violet)}
+.tabs{display:flex;gap:4px;background:#fff;border-radius:14px;padding:4px;margin-top:10px;box-shadow:0 1px 0 var(--line)}
+.tabs button{flex:1;padding:8px 2px;border-radius:10px;font-weight:800;font-size:13px;color:var(--grey)}.tabs button.on{background:var(--ink);color:#fff}
+.lbrows{display:flex;flex-direction:column;gap:6px;max-height:46vh;overflow-y:auto}
+.lbr{display:flex;align-items:center;gap:10px;background:#fff;border-radius:14px;padding:8px 12px;text-align:left;box-shadow:0 1px 0 var(--line)}
+.lbr.me{box-shadow:inset 0 0 0 2px var(--violet)}.lbr .rk{width:28px;text-align:center;font-weight:900;font-size:16px}
+.lbr .ln{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:2px}.lbr .ln b{font-size:15px;font-weight:800}
+.lbr .sc{font-family:"Archivo Black";font-size:17px;text-align:right}.lbr .sc small{display:block;font-family:"Fira Sans";font-size:11px;color:var(--grey);font-weight:600}
+.how{margin-top:12px;background:#fff;border-radius:16px;padding:10px 14px}.how summary{font-weight:800;color:var(--violet);cursor:pointer}
+.how ul{padding-left:18px;margin:8px 0}.how li{font-size:14px;margin-bottom:5px}.how p{font-size:14px}
+.tiers{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.tiers small{color:var(--grey);font-size:11.5px}
 @media (min-width:700px){ .stage{padding:0 20px} }
 </style>
 </head>
@@ -238,7 +311,17 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
     </div>
 
     <h2 class="sec">Opponent</h2>
-    <div class="seg" id="oppSeg"><button data-v="pass">Pass &amp; Play</button><button data-v="ai">vs AI</button></div>
+    <div class="seg" id="oppSeg"><button data-v="pass">Pass &amp; Play</button><button data-v="ai">vs AI</button><button data-v="online">Online</button></div>
+    <div id="onlineOpts" class="hidden" style="display:flex;flex-direction:column;gap:10px">
+      <button class="srv checking" id="srvStatus"><span class="dot"></span><span id="srvText">Checking game servers…</span></button>
+      <div id="onOut" class="oncard hidden"><b>Play people online</b><span>Make a free account to play ranked matches, climb the leaderboards and play friends with a 4-digit code.</span>
+        <div class="btn2"><button id="onLogin">Sign in</button><button class="pri" id="onSignup">Create free account</button></div></div>
+      <div id="onIn" class="hidden" style="display:flex;flex-direction:column;gap:10px">
+        <button class="me-card" id="meCard"></button>
+        <div class="btn2"><button id="createRoomBtn">Create a friend game</button><button id="joinRoomBtn">Join with a code</button></div>
+      </div>
+      <button class="link-btn" id="lbBtn">🏆 Leaderboards &amp; how ranking works</button>
+    </div>
     <div id="layoutRow" class="hidden" style="display:flex;flex-direction:column;gap:8px">
       <div class="seg" id="layoutSeg"><button data-v="same">Same side</button><button data-v="face">Face to face</button></div>
     </div>
@@ -257,7 +340,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
     <button id="tutBtn" class="tut-card"><span class="play">▶</span><div><b>Watch the tutorial</b><span>3-minute video: from tic-tac-toe to Cubed³</span></div></button>
     <button id="rulesBtn" class="link-btn">How to play this mode</button>
     <button id="vibeBtn" class="link-btn" style="color:var(--grey);font-size:13.5px;padding:2px"></button>
-    <div class="brand"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE <span class="ver">· v2.1</span></div>
+    <div class="brand"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE <span class="ver">· v3.0</span></div>
   </div>
 </section>
 
@@ -271,6 +354,8 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
     <button id="rulesBtn2" class="icon-btn" aria-label="Rules"><svg viewBox="0 0 24 24" fill="none" stroke="#1F1B2E" stroke-width="2.3" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 1 1 3.4 2.3c-.7.3-1 .8-1 1.5v.4"/><circle cx="12" cy="17" r=".6" fill="#1F1B2E"/></svg></button>
     <button id="soundBtn" class="icon-btn" aria-label="Sound"></button>
   </header>
+  <div id="vsbar" class="vsbar hidden"></div>
+  <div id="netBanner" class="netbanner hidden">Reconnecting to the game server…</div>
   <div id="pTop" class="ppanel top"></div>
   <div class="hud">
     <canvas id="map" class="hidden"></canvas>
@@ -287,7 +372,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
       <button id="wormBtn" class="worm-btn hidden"></button>
       <button id="confirmBtn" class="confirm-btn" disabled>CONFIRM</button>
     </div>
-    <div class="gfoot"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE · v2.1</div>
+    <div class="gfoot"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE · v3.0</div>
   </div>
   <div id="pBot" class="ppanel bot"></div>
 </section>
@@ -546,7 +631,7 @@ function ENGINE() {
 <script>
 "use strict";
 const E = ENGINE();
-const VERSION = "v2.1";
+const VERSION = "v3.0";
 const $ = id => document.getElementById(id);
 const POS = ["top-left", "top-middle", "top-right", "middle-left", "centre", "middle-right", "bottom-left", "bottom-middle", "bottom-right"];
 const COL = { 1: "#EC4899", 2: "#3B82F6" };
@@ -706,8 +791,12 @@ function newGame(cfg, saved) {
   refreshLegal();
 }
 function isAI(p) { return G.cfg.opp === "ai" && p !== G.cfg.human; }
+function isRemote(p) { return G.cfg.opp === "online" && p !== G.cfg.human; }
+function notLocal(p) { return isAI(p) || isRemote(p); }
+const ON = () => (typeof Online !== "undefined" ? Online : null);
 function pname(p, short) {
   const m = p === 1 ? "X" : "O";
+  if (G.cfg.opp === "online") return p === G.cfg.human ? (short ? "You" : `You (${m})`) : ((G.cfg.players && G.cfg.players[p] && G.cfg.players[p].name) || "Opponent");
   if (G.cfg.opp !== "ai") return m;
   return p === G.cfg.human ? (short ? "You" : `You (${m})`) : (short ? "AI" : `AI (${m})`);
 }
@@ -717,7 +806,7 @@ function refreshLegal() {
   G.legalGames = new Set(G.legal.map(c => (c / 81) | 0));
 }
 function save() {
-  if (!G) return;
+  if (!G || G.cfg.opp === "online") return;
   try {
     if (G.s.winner) localStorage.removeItem(SAVE_KEY);
     else localStorage.setItem(SAVE_KEY, JSON.stringify({ cfg: G.cfg, s: E.toJSON(G.s), view: G.view, v: VERSION }));
@@ -774,6 +863,12 @@ function layout() {
   sizeCanvas(board, bctx, BS, BS);
 }
 window.addEventListener("resize", () => { layout(); });
+// re-measure the board whenever the space around it changes (status text wrapping, online bar, etc.)
+let lastStage = "";
+if (window.ResizeObserver) new ResizeObserver(() => {
+  const r = $("stage").getBoundingClientRect(), k = Math.round(r.width) + "x" + Math.round(r.height);
+  if (k !== lastStage && G && $("game").classList.contains("active")) { lastStage = k; layout(); }
+}).observe($("stage"));
 
 // ======================= GEOMETRY =======================
 function geoGame(x, y, T) {
@@ -899,7 +994,7 @@ function drawMain(t) {
   }
   const gm = mainGeo(), g = L === 3 ? G.view : 0, tint = L === 3 ? tintFor(g) : VIOLET;
   const gameClosed = L === 3 && s.gw[g];
-  const myTurn = !s.winner;
+  const myTurn = !s.winner && !G.forcedEnd;
   const p = s.turn;
   const z = E.zone(s, G.worm);
   // tile
@@ -1133,7 +1228,7 @@ function shake(big) { const st = $("stage"); st.classList.remove("shake", "shake
 function loop() {
   const t = now();
   if (G && $("game").classList.contains("active")) {
-    drawMain(t);
+    drawMain(t); if (ON()) Online.tick();
     if (isFace()) { for (const P of PANELS) drawMap(t, P.mctx, PMS); } else drawMap(t);
   }
   drawFx();
@@ -1154,12 +1249,14 @@ function zoneText(s, z) {
 function updateHUD() {
   const s = G.s, p = s.turn, pill = $("turnPill");
   const thinking = G.busy && isAI(p) && !s.winner;
-  pill.style.background = s.winner ? "linear-gradient(90deg,#EC4899,#8B5CF6,#3B82F6)" : COL[p];
+  const ended = s.winner || G.forcedEnd;
+  pill.style.background = ended ? "linear-gradient(90deg,#EC4899,#8B5CF6,#3B82F6)" : COL[p];
   pill.classList.toggle("thinking", thinking);
-  if (s.winner) pill.innerHTML = `<span class="m">★</span>Game over`;
-  else pill.innerHTML = `<span class="m">${p === 1 ? "X" : "O"}</span>${isAI(p) ? (G.pending >= 0 ? "AI's move" : `AI thinking<span class="dots"></span>`) : (G.cfg.opp === "ai" ? "Your turn" : `${p === 1 ? "X" : "O"}'s turn`)}`;
+  if (ended) pill.innerHTML = `<span class="m">★</span>Game over`;
+  else if (isRemote(p)) pill.innerHTML = `<span class="m">${p === 1 ? "X" : "O"}</span>${esc(pname(p, true))}${G.pending >= 0 ? "'s move" : "'s turn"}<span class="clock"></span>`;
+  else pill.innerHTML = `<span class="m">${p === 1 ? "X" : "O"}</span>${isAI(p) ? (G.pending >= 0 ? "AI's move" : `AI thinking<span class="dots"></span>`) : (G.cfg.opp !== "pass" ? "Your turn" : `${p === 1 ? "X" : "O"}'s turn`)}${G.cfg.opp === "online" ? `<span class="clock"></span>` : ""}`;
   const z = E.zone(s, G.worm);
-  $("status").innerHTML = s.winner ? endLine() : (isAI(p) ? (G.pending >= 0 ? "Here's the AI's move. Watch where it sends you!" : "The AI is choosing a move…") : zoneText(s, z));
+  $("status").innerHTML = ended ? endLine() : (notLocal(p) ? (G.pending >= 0 ? `Here's ${isAI(p) ? "the AI's" : esc(pname(p, true)) + "'s"} move. Watch where it sends you!` : (isAI(p) ? "The AI is choosing a move…" : `Waiting for <b>${esc(pname(p, true))}</b>…`)) : zoneText(s, z));
   if (s.L === 3) {
     const w = $("worms"); w.classList.remove("hidden");
     w.innerHTML = [1, 2].map(q => `<span class="w" style="color:${COL[q]}">${q === 1 ? "X" : "O"} ${planetSVG(COL[q]).repeat(s.worm[q])}${s.worm[q] === 0 ? "—" : ""}</span>`).join("");
@@ -1173,6 +1270,7 @@ function updateHUD() {
   if (isFace()) renderPanels();
 }
 function endLine() {
+  if (G.forcedEnd && ON()) return Online.endLine();
   const w = G.s.winner; if (w === 3) return "It's a <b>tie</b>. Nobody could get three in a row.";
   return `${pname(w)} <b>wins the match!</b>`;
 }
@@ -1181,7 +1279,7 @@ function planetSVG(c, size = 15) {
 }
 function updateActions() {
   const s = G.s, p = s.turn, conf = $("confirmBtn"), info = $("sendInfo"), wb = $("wormBtn");
-  const human = !s.winner && !isAI(p) && !G.busy;
+  const human = !s.winner && !G.forcedEnd && !notLocal(p) && !G.busy;
   conf.classList.toggle("hidden", s.L === 1 && !s.winner);
   wb.classList.toggle("hidden", s.L !== 3 || !!s.winner);
   if (s.L === 3) {
@@ -1189,20 +1287,21 @@ function updateActions() {
     wb.classList.toggle("armed", G.worm);
     wb.innerHTML = `${planetSVG(COL[p], 26)}<span>${G.worm ? "Cancel<br>wormhole" : `Wormhole<br><small>${s.worm[p]} left</small>`}</span>`;
   }
-  if (s.winner) {
-    conf.disabled = false; conf.textContent = "REMATCH"; conf.classList.remove("ready");
+  if (s.winner || G.forcedEnd) {
+    conf.classList.remove("hidden"); wb.classList.add("hidden");
+    conf.disabled = false; conf.textContent = G.cfg.opp === "online" ? (G.cfg.rated ? "PLAY AGAIN" : "NEW CODE") : "REMATCH"; conf.classList.remove("ready");
     info.innerHTML = `<span class="arrow">★</span><span>${endLine()} Tap <b>Rematch</b> or the back arrow for the menu.</span>`;
     return;
   }
   conf.textContent = "CONFIRM";
   conf.disabled = !(human && G.pending >= 0); conf.classList.toggle("ready", !conf.disabled);
-  if (s.L === 1) { info.innerHTML = `<span class="arrow">↓</span><span>${isAI(p) ? "The AI is thinking…" : `Tap a square to place ${mk(p)}`}</span>`; return; }
+  if (s.L === 1) { info.innerHTML = `<span class="arrow">↓</span><span>${isAI(p) ? "The AI is thinking…" : isRemote(p) ? "Waiting for your opponent…" : `Tap a square to place ${mk(p)}`}</span>`; return; }
   if (G.pending < 0) {
-    info.innerHTML = isAI(p) ? `<span class="arrow">…</span><span>Watch where the AI sends you.</span>`
+    info.innerHTML = notLocal(p) ? `<span class="arrow">…</span><span>Watch where ${isAI(p) ? "the AI sends" : "they send"} you.</span>`
       : `<span class="arrow">?</span><span>Tap a square to <b>preview</b> where it sends ${mk(3 - p)}.</span>`;
     return;
   }
-  info.innerHTML = `<span class="arrow">→</span><span>${isAI(p) ? "AI plays here. " : ""}${sendLine()}</span>`;
+  info.innerHTML = `<span class="arrow">→</span><span>${isAI(p) ? "AI plays here. " : isRemote(p) ? "Their move. " : ""}${sendLine()}</span>`;
 }
 function sendLine() {
   const s = G.s, p = s.turn, pi = G.pinfo, op = 3 - p; let txt = "", tag = "";
@@ -1292,14 +1391,15 @@ function sendTarget(s) {
   return r ? canvasPt(mapEl, ctr(r), flip, M) : null;
 }
 function commit(cell) {
-  const s = G.s, p = s.turn, pc = COL[p];
+  const s = G.s, p = s.turn, pc = COL[p], usedWorm = G.worm, nBefore = s.moves;
   const cr = cellRect(cell), cpt = cr ? boardPt(ctr(cr)) : null;
   if (G.worm) { s.worm[p]--; SFX.wormhole(); if (cpt) vortex(cpt[0], cpt[1]); stamp("WORMHOLE!", "#8B5CF6", isFace() && p === 2); }
   const ev = E.play(s, cell);
+  if (G.cfg.opp === "online" && p === G.cfg.human && ON()) Online.sendMove(cell, usedWorm, nBefore);
   G.worm = false; G.lastT = now(); G.pending = -1; G.pinfo = null;
   SFX.place(p); haptic("medium");
   if (cpt) { sparks(cpt[0], cpt[1], pc, 16, 4.5, 3); ring(cpt[0], cpt[1], pc, cr[2] * .9, 3, 420); }
-  const vsAI = G.cfg.opp === "ai", good = !vsAI || p === G.cfg.human;
+  const good = G.cfg.opp === "pass" || p === G.cfg.human;
   // the send: an orb flies to where the opponent must play
   const tgt = sendTarget(s);
   if (cpt && tgt) setTimeout(() => orb(cpt, tgt, COL[3 - p], () => { ring(tgt[0], tgt[1], COL[3 - p], 34, 3, 500); sparks(tgt[0], tgt[1], COL[3 - p], 10, 3, 2.5); SFX.arrive(); }, 520), 140);
@@ -1345,18 +1445,19 @@ function maybeAI() {
 }
 function endGame() {
   const s = G.s, w = s.winner; G.endT = now(); G.over = true; updateHUD(); save();
-  const vsAI = G.cfg.opp === "ai", humanWon = !vsAI || w === G.cfg.human;
+  const vsAI = G.cfg.opp !== "pass", humanWon = !vsAI || w === G.cfg.human;
   setTimeout(() => {
     if (w === 3) { SFX.tieTune(); stamp("TIE!", "#8E87A6"); }
     else if (humanWon) { SFX.fanfare(); confetti(220); setTimeout(() => confetti(160), 900); fireworks(9, 2600);
       stamp(vsAI ? "YOU WIN!" : `${w === 1 ? "X" : "O"} WINS!`, COL[w], isFace() && w === 2); shake(true); }
-    else { SFX.sadTrombone(); stamp("AI WINS", "#6B6880"); const st = $("stage"); st.classList.add("sad"); setTimeout(() => st.classList.remove("sad"), 2600); shake(false); }
+    else { SFX.sadTrombone(); stamp(G.cfg.opp === "online" ? "YOU LOST" : "AI WINS", "#6B6880"); const st = $("stage"); st.classList.add("sad"); setTimeout(() => st.classList.remove("sad"), 2600); shake(false); }
   }, 350);
   haptic("max");
   setTimeout(() => showEnd(), 2300);
 }
 function showEnd() {
   if (!G) return;
+  if (G.cfg.opp === "online" && ON()) return Online.showEnd();
   const w = G.s.winner, vsAI = G.cfg.opp === "ai";
   const lose = vsAI && w !== 3 && w !== G.cfg.human;
   let title, sub, medal;
@@ -1369,13 +1470,13 @@ function showEnd() {
   $("eView").onclick = () => closeSheet();
   $("eAgain").onclick = () => { closeSheet(); rematch(); };
 }
-function rematch() { startGame(G.cfg); }
+function rematch() { if (G.cfg.opp === "online" && ON()) return Online.again(); startGame(G.cfg); }
 
 // ======================= INPUT =======================
 function boardTap(ev) {
   SFX.init();
   if (!G || G.busy) return;
-  const s = G.s; if (s.winner || isAI(s.turn)) return;
+  const s = G.s; if (s.winner || G.forcedEnd || notLocal(s.turn)) return;
   const rect = board.getBoundingClientRect(), x = ev.clientX - rect.left, y = ev.clientY - rect.top;
   let cell = -1;
   if (s.L === 1) { const gc = geoClassic(BS); for (let c = 0; c < 9; c++) { const r = gc.cell(c); if (x >= r[0] && x < r[0] + r[2] && y >= r[1] && y < r[1] + r[2]) cell = c; } }
@@ -1399,8 +1500,8 @@ function boardTap(ev) {
 function confirmMove() {
   SFX.init();
   if (!G) return;
-  if (G.s.winner) return rematch();
-  if (G.pending < 0 || G.busy || isAI(G.s.turn)) return;
+  if (G.s.winner || G.forcedEnd) return rematch();
+  if (G.pending < 0 || G.busy || notLocal(G.s.turn)) return;
   commit(G.pending);
 }
 function mapTap(ev) { const rect = mapC.getBoundingClientRect(); mapTapAt(ev.clientX - rect.left, ev.clientY - rect.top, MS); }
@@ -1414,7 +1515,7 @@ board.addEventListener("pointerup", boardTap);
 mapC.addEventListener("pointerup", mapTap);
 $("confirmBtn").onclick = confirmMove;
 function toggleWorm() {
-  SFX.init(); if (!G || G.busy || G.s.winner || isAI(G.s.turn)) return; const p = G.s.turn; if (G.s.worm[p] <= 0) return;
+  SFX.init(); if (!G || G.busy || G.s.winner || G.forcedEnd || notLocal(G.s.turn)) return; const p = G.s.turn; if (G.s.worm[p] <= 0) return;
   G.worm = !G.worm; setPending(-1); refreshLegal();
   if (G.worm) { SFX.wormhole(); haptic("heavy"); toast("Wormhole open: play anywhere!", "#8B5CF6"); const c = boardPt([BS / 2, BS / 2]); vortex(c[0], c[1]); } else SFX.tap();
   autoView(); updateHUD();
@@ -1428,7 +1529,7 @@ $("faceBtn").onclick = () => {
 };
 document.addEventListener("gesturestart", e => e.preventDefault());
 document.addEventListener("pointerdown", e => { if (e.target.closest("button")) haptic("light"); }, true);
-board.addEventListener("pointerdown", () => { if (G && !G.busy && !G.s.winner && !isAI(G.s.turn)) haptic("light"); });
+board.addEventListener("pointerdown", () => { if (G && !G.busy && !G.s.winner && !G.forcedEnd && !notLocal(G.s.turn)) haptic("light"); });
 
 // ======================= SCREENS =======================
 function show(id) { for (const s of document.querySelectorAll(".screen")) s.classList.toggle("active", s.id === id); }
@@ -1436,15 +1537,16 @@ function startGame(cfg, saved) {
   newGame(cfg, saved);
   if (!saved) save();
   $("gTitle").textContent = MODE_NAME[cfg.L];
-  $("gSub").textContent = cfg.opp === "ai" ? `vs AI · ${DIFF_NAME[cfg.diff]}` : "Pass & Play";
+  $("gSub").textContent = cfg.opp === "ai" ? `vs AI · ${DIFF_NAME[cfg.diff]}` : cfg.opp === "online" ? Online.subtitle(cfg) : "Pass & Play";
+  if (ON()) Online.onStart();
   show("game"); $("game").classList.toggle("face", isFace());
   requestAnimationFrame(() => { layout(); autoView(); G.viewT = -1e9; G.startT = now(); updateHUD(); maybeAI(); });
 }
-function goHome() { G = null; workerCb = null; if (worker) { worker.terminate(); makeWorker(); } refreshHome(); show("home"); }
-$("homeBtn").onclick = () => { SFX.init(); SFX.tap(); goHome(); };
+function goHome() { closeSheet(); G = null; if (ON()) { Online.cancelLobby(); $("netBanner").classList.add("hidden"); } workerCb = null; if (worker) { worker.terminate(); makeWorker(); } refreshHome(); show("home"); }
+$("homeBtn").onclick = () => { SFX.init(); SFX.tap(); if (G && G.cfg.opp === "online" && !G.s.winner && !G.forcedEnd && ON()) return Online.confirmLeave(); goHome(); };
 
 function openSheet(html) { $("sheet").innerHTML = html; $("modal").classList.remove("hidden"); }
-function closeSheet() { const v = $("tutVid"); if (v) v.pause(); $("modal").classList.add("hidden"); }
+function closeSheet() { const v = $("tutVid"); if (v) v.pause(); const wasOpen = !$("modal").classList.contains("hidden"); $("modal").classList.add("hidden"); if (wasOpen && ON()) Online.onSheetClosed(); }
 function showTutorial() {
   openSheet(`<h2>Video tutorial</h2><p style="color:var(--grey);margin-top:6px">Three minutes: tic-tac-toe → Ultimate → Cubed³, with pause-and-guess moments. Turn your phone sideways or tap full screen for the best view.</p>
     <video id="tutVid" src="tutorial.mp4" poster="tutorial-poster.jpg" controls playsinline preload="metadata"></video>
@@ -1496,6 +1598,9 @@ function refreshHome() {
   for (const b of document.querySelectorAll("#diffs button")) b.classList.toggle("on", +b.dataset.d === prefs.diff);
   for (const b of document.querySelectorAll("#sideSeg button")) b.classList.toggle("on", +b.dataset.v === prefs.side);
   $("aiOpts").classList.toggle("hidden", prefs.opp !== "ai");
+  $("onlineOpts").classList.toggle("hidden", prefs.opp !== "online");
+  if (prefs.opp !== "online") { $("playBtn").textContent = "PLAY"; $("playBtn").classList.remove("off"); }
+  if (ON()) Online.refreshHome();
   $("layoutRow").classList.toggle("hidden", prefs.opp !== "pass");
   for (const b of document.querySelectorAll("#layoutSeg button")) b.classList.toggle("on", (b.dataset.v === "face") === !!prefs.face);
   $("diffDesc").textContent = DIFF_DESC[prefs.diff];
@@ -1512,6 +1617,7 @@ $("tutBtn").onclick = () => { SFX.init(); SFX.tap(); showTutorial(); };
 document.querySelectorAll("#sideSeg button").forEach(b => b.onclick = () => { SFX.init(); SFX.tap(); prefs.side = +b.dataset.v; savePrefs(); refreshHome(); });
 $("playBtn").onclick = () => {
   SFX.init(); SFX.select(1); haptic();
+  if (prefs.opp === "online") return Online.play(prefs.L);
   startGame({ L: prefs.L, opp: prefs.opp, diff: prefs.diff, human: prefs.opp === "ai" ? prefs.side : 1, face: prefs.opp === "pass" && !!prefs.face });
 };
 $("continueBtn").onclick = () => { SFX.init(); SFX.tap(); const sv = loadSave(); if (sv) startGame(sv.cfg, sv); };
@@ -1521,6 +1627,454 @@ buildPanels(); soundIcon(); refreshHome(); makeWorker(); sizeCanvas(fx, fxctx, w
 setTimeout(() => $("splash").classList.add("out"), 1500);
 setTimeout(() => $("splash").remove(), 2100);
 window.__ttt = { get G() { return G; }, E, startGame, commit, setPending, confirmMove };
+
+</script>
+<script>
+"use strict";
+// ======================= ONLINE (accounts, matchmaking, rooms, leaderboards) =======================
+const ON_COLOURS = ["#EC4899", "#D946EF", "#8B5CF6", "#6366F1", "#3B82F6", "#0EA5E9", "#14B8A6", "#F59E0B", "#EF4444", "#1F1B2E"];
+const ON_AVATARS = ["🚀", "🌙", "⭐", "🪐", "☄️", "🔭", "🌌", "👾", "🐙", "🦊", "🐸", "🐼", "🦉", "🐳", "🔥", "⚡", "🎺", "🎯", "🏒", "🥏"];
+const TIER_LIST = [[1850, "Grandmaster"], [1700, "Master"], [1550, "Diamond"], [1400, "Platinum"], [1250, "Gold"], [1100, "Silver"], [0, "Bronze"]];
+const TIER_COL = { Bronze: "#B4793F", Silver: "#8E99A8", Gold: "#D4A017", Platinum: "#14B8A6", Diamond: "#3B82F6", Master: "#8B5CF6", Grandmaster: "#EC4899" };
+const PERIODS = [["day", "Today"], ["week", "This week"], ["month", "This month"], ["all", "All-time"]];
+const REASON = { line: "three in a row", draw: "a full sheet", time: "the turn timer", resign: "resignation", abort: "abort" };
+function esc(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c])); }
+function tierBadge(t) {
+  const name = String(t || ""), col = TIER_COL[name] || "#9A94AE";
+  return `<span class="tier" style="--tc:${col}">${esc(name)}</span>`;
+}
+function avatarHTML(u, size = 40) {
+  return `<span class="avatar" style="width:${size}px;height:${size}px;font-size:${Math.round(size * .55)}px;background:${esc(u.colour)}22;box-shadow:inset 0 0 0 2px ${esc(u.colour)}">${esc(u.avatar)}</span>`;
+}
+
+const Online = {
+  base: null, status: "checking", info: null,
+  token: localStorage.getItem("ttt3-token") || null, me: null,
+  ws: null, ready: false, outbox: [], retry: 0, lobby: null, lobbyT: 0, endInfo: null, deadline: 0, oppOnline: true, lastMode: 3,
+
+  // ---------- server discovery ----------
+  async discover() {
+    this.status = "checking"; this.refreshHome();
+    try {
+      let base = localStorage.getItem("ttt3-server");
+      if (!base) {
+        const r = await fetch("server.json?t=" + Date.now(), { cache: "no-store" });
+        base = (await r.json()).server;
+      }
+      if (!base) throw new Error("no server");
+      base = base.replace(/\/+$/, "");
+      const ctl = new AbortController(); setTimeout(() => ctl.abort(), 6000);
+      const r2 = await fetch(base + "/api/status", { signal: ctl.signal });
+      const d = await r2.json(); if (!d.ok) throw new Error("bad status");
+      this.base = base; this.info = d; this.status = "online";
+      if (this.token) await this.loadMe();
+    } catch (e) { this.status = "offline"; this.base = null; }
+    this.refreshHome();
+  },
+  async api(path, data) {
+    if (!this.base) throw new Error("offline");
+    const h = { "Content-Type": "application/json" };
+    if (this.token) h.Authorization = "Bearer " + this.token;
+    const r = await fetch(this.base + path, data ? { method: "POST", headers: h, body: JSON.stringify(data) } : { headers: h });
+    const d = await r.json().catch(() => ({ ok: false, error: "Server error." }));
+    if (r.status === 401 && this.token && !path.includes("login")) { this.signOutLocal(); }
+    return d;
+  },
+  async loadMe() {
+    const d = await this.api("/api/me").catch(() => null);
+    if (d && d.ok) { this.me = d.user; this.connect(); if (d.active_game) this.send({ t: "resume" }); }
+    else if (d && !d.ok) this.signOutLocal();
+  },
+  setSession(d) {
+    this.token = d.token; localStorage.setItem("ttt3-token", d.token); this.me = d.user;
+    this.connect(); this.refreshHome();
+  },
+  signOutLocal() {
+    this.token = null; this.me = null; localStorage.removeItem("ttt3-token");
+    if (this.ws) { try { this.ws.close(); } catch (e) {} } this.ws = null; this.ready = false; this.refreshHome();
+  },
+
+  // ---------- websocket ----------
+  connect() {
+    if (!this.base || !this.token || (this.ws && this.ws.readyState <= 1)) return;
+    const ws = new WebSocket(this.base.replace(/^http/, "ws") + "/ws"); this.ws = ws; this.ready = false;
+    ws.onopen = () => ws.send(JSON.stringify({ t: "auth", token: this.token }));
+    ws.onmessage = e => { try { this.handle(JSON.parse(e.data)); } catch (err) { console.error(err); } };
+    ws.onclose = () => {
+      if (this.ws !== ws) return;
+      this.ready = false; this.ws = null;
+      if (this.lobby) { this.lobby = null; closeSheet(); toast("Lost connection to the game server", "#6B6880"); }
+      if (this.token && this.status === "online") {
+        if (this.inGame()) $("netBanner").classList.remove("hidden");
+        const wait = Math.min(10000, 1000 * Math.pow(2, this.retry++));
+        setTimeout(() => this.connect(), wait);
+        if (this.retry > 4) this.discover();
+      }
+    };
+  },
+  send(msg) {
+    if (this.ready && this.ws) this.ws.send(JSON.stringify(msg));
+    else { this.outbox.push(msg); this.connect(); }
+  },
+  inGame() { return !!(G && G.cfg.opp === "online" && !G.s.winner && !G.forcedEnd); },
+  handle(d) {
+    switch (d.t) {
+      case "hello":
+        this.ready = true; this.retry = 0; $("netBanner").classList.add("hidden");
+        if (this.inGame()) this.send({ t: "resume" });
+        for (const m of this.outbox.splice(0)) this.ws.send(JSON.stringify(m));
+        break;
+      case "auth_fail": this.signOutLocal(); break;
+      case "kicked": this.ws = null; toast("You signed in on another device", "#6B6880"); if (G && G.cfg.opp === "online") goHome(); break;
+      case "queued": this.lobby = "queue"; this.lobbyT = now(); this.searchSheet(d.mode); break;
+      case "room": this.lobby = "room"; this.roomSheet(d.code, d.mode); break;
+      case "room_expired": this.lobby = null; closeSheet(); toast("Your friend game code expired", "#6B6880"); break;
+      case "cancelled": this.lobby = null; break;
+      case "error": { const e = $("onErr"); if (e) e.textContent = d.msg; else toast(d.msg, "#6B6880"); break; }
+      case "state": case "sync": this.startFromState(d); if (d.t === "sync") toast(d.msg || "Board re-synced", "#6B6880"); break;
+      case "move": this.onMove(d); break;
+      case "opp":
+        this.oppOnline = d.online;
+        if (this.inGame()) toast(d.online ? "Your opponent is back" : "Your opponent disconnected. Their clock keeps running.", d.online ? "#14B8A6" : "#6B6880");
+        break;
+      case "end": this.onEnd(d); break;
+    }
+  },
+
+  // ---------- lobby ----------
+  play(mode) {
+    if (this.status !== "online") { toast("Game servers are offline right now", "#6B6880"); this.discover(); return; }
+    if (!this.me) return this.authSheet("signup");
+    this.lastMode = mode; this.send({ t: "queue", mode });
+  },
+  createRoom(mode) { if (!this.me) return this.authSheet("signup"); this.lastMode = mode; this.send({ t: "create", mode }); },
+  cancelLobby() { if (this.lobby) { this.send({ t: "cancel" }); this.lobby = null; } },
+  onSheetClosed() { if (this.lobby) this.cancelLobby(); },
+  searchSheet(mode) {
+    const r = this.me ? this.me.ratings[mode] : null;
+    openSheet(`<div class="search"><div class="radar"><span></span><span></span><span></span><b>${MODE_NAME[mode]}</b></div>
+      <h2 style="text-align:center">Finding an opponent</h2><p class="sub" id="searchT">0:00</p>
+      <p style="text-align:center;color:var(--grey)">Matching players near your rating${r ? ` (<b>${r.rating}</b>)` : ""}. The longer you wait, the wider the search.</p>
+      <div class="row"><button id="sCancel">Cancel</button></div></div>`);
+    $("sCancel").onclick = () => { this.cancelLobby(); closeSheet(); };
+  },
+  roomSheet(code, mode) {
+    openSheet(`<div class="search"><h3 style="text-align:center">Friend game · ${MODE_NAME[mode]}</h3><h2 style="text-align:center;margin-top:4px">Your game code</h2>
+      <div class="codebox">${code.split("").map(c => `<span>${c}</span>`).join("")}</div>
+      <p style="text-align:center;color:var(--grey)">Tell your friend to tap <b>Join with a code</b> and type these 4 digits. Friend games don't change ratings.</p>
+      <p class="sub waiting">Waiting for your friend<span class="dots"></span></p>
+      <div class="row"><button id="rCancel">Cancel</button><button class="pri" id="rShare">SHARE CODE</button></div></div>`);
+    $("rCancel").onclick = () => { this.cancelLobby(); closeSheet(); };
+    $("rShare").onclick = async () => {
+      const text = `Play me in Tic-Tac-Toe³! Open ${location.href.split("?")[0]} → Online → Join with a code → ${code}`;
+      try { if (navigator.share) await navigator.share({ text }); else { await navigator.clipboard.writeText(text); toast("Copied!", "#8B5CF6"); } } catch (e) {}
+    };
+  },
+  joinSheet() {
+    if (!this.me) return this.authSheet("signup");
+    openSheet(`<h2>Join a friend</h2><p style="color:var(--grey);margin-top:6px">Type the 4-digit code from your friend's screen.</p>
+      <input id="joinCode" class="codein" inputmode="numeric" pattern="[0-9]*" maxlength="4" autocomplete="off" placeholder="••••">
+      <p id="onErr" class="ferr"></p><div class="row"><button id="jCancel">Cancel</button><button class="pri" id="jGo">JOIN</button></div>`);
+    const inp = $("joinCode"); setTimeout(() => inp.focus(), 250);
+    inp.oninput = () => { inp.value = inp.value.replace(/\D/g, "").slice(0, 4); if (inp.value.length === 4) $("jGo").click(); };
+    $("jCancel").onclick = closeSheet;
+    $("jGo").onclick = () => { if (inp.value.length !== 4) { $("onErr").textContent = "Codes are 4 digits."; return; } $("onErr").textContent = ""; this.send({ t: "join", code: inp.value }); };
+  },
+
+  // ---------- games ----------
+  startFromState(d) {
+    this.lobby = null; this.endInfo = null; this.oppOnline = d.opp_online !== false;
+    const s = E.create(d.mode);
+    for (const [c, w] of d.moves) { if (w) s.worm[s.turn]--; E.play(s, c); }
+    this.deadline = now() + d.left;
+    const cfg = { L: d.mode, opp: "online", human: d.you, diff: 0, rated: d.rated, gid: d.id, code: d.code, players: d.players, turnSecs: d.turn_secs };
+    const same = G && G.cfg.opp === "online" && G.cfg.gid === d.id;
+    if (same && G.s.moves === s.moves) { G.busy = false; updateHUD(); return; }
+    closeSheet();
+    const view = d.mode === 3 ? (s.target >= 0 ? (s.target / 9) | 0 : 4) : 4;
+    startGame(cfg, { s: E.toJSON(s), view });
+    if (!same) {
+      const opp = d.players[3 - d.you];
+      SFX.gameWin(); haptic("heavy");
+      stamp(d.moves.length ? "RECONNECTED" : "MATCHED!", COL[d.you]);
+      toast(`${d.rated ? "Ranked" : "Friend"} game vs ${opp.name} · you're ${d.you === 1 ? "X (first)" : "O (second)"}`, COL[d.you]);
+    }
+  },
+  sendMove(cell, worm, n) { this.send({ t: "move", cell, worm: worm ? 1 : 0, n }); },
+  onMove(d) {
+    if (!G || G.cfg.opp !== "online") return;
+    this.deadline = now() + d.left;
+    if (d.n < G.s.moves) { updateHUD(); return; }          // echo of my own move
+    if (d.n > G.s.moves) { this.send({ t: "resume" }); return; }  // we missed something
+    const gameRef = G, s = G.s;
+    G.busy = true;
+    if (d.worm) { G.worm = true; refreshLegal(); toast(`${pname(s.turn, true)} opened a wormhole!`, "#8B5CF6"); SFX.wormhole(); }
+    if (s.L === 3) setView((d.cell / 81) | 0);
+    if (s.L === 1) { G.busy = false; commit(d.cell); return; }
+    setTimeout(() => {
+      if (G !== gameRef) return;
+      setPending(d.cell); SFX.select(s.turn); updateHUD();
+      setTimeout(() => { if (G !== gameRef) return; G.busy = false; commit(d.cell); }, 900);
+    }, s.L === 3 ? 300 : 40);
+  },
+  onEnd(d) {
+    this.endInfo = d;
+    if (this.me && d.rated && d.ratings && G && G.cfg.opp === "online") {
+      const mine = d.ratings[G.cfg.human]; if (mine && this.me.ratings[G.s.L]) { this.me.ratings[G.s.L].rating = mine.new; this.me.ratings[G.s.L].tier = mine.tier; }
+    }
+    if (!G || G.cfg.opp !== "online") return;
+    if (G.s.winner) return; // normal finish: endGame() is already running and will show the result
+    // resign / timeout / abort
+    G.forcedEnd = d; G.over = true; G.busy = false; G.pending = -1; G.pinfo = null; G.endT = now();
+    const won = d.winner === G.cfg.human;
+    updateHUD();
+    setTimeout(() => {
+      if (d.winner === 0) { SFX.tieTune(); stamp("ABORTED", "#8E87A6"); }
+      else if (won) { SFX.fanfare(); confetti(200); fireworks(7, 2200); stamp("YOU WIN!", COL[G.cfg.human]); shake(true); }
+      else { SFX.sadTrombone(); stamp("YOU LOST", "#6B6880"); const st = $("stage"); st.classList.add("sad"); setTimeout(() => st.classList.remove("sad"), 2600); }
+      haptic("max");
+    }, 200);
+    setTimeout(() => this.showEnd(), 1700);
+  },
+  endLine() {
+    const d = G.forcedEnd; if (!d) return "";
+    if (d.winner === 0) return "Game aborted (no moves were made). No rating change.";
+    const won = d.winner === G.cfg.human;
+    return d.reason === "resign" ? (won ? "Your opponent resigned. <b>You win!</b>" : "You resigned.")
+      : d.reason === "time" ? (won ? "Your opponent ran out of time. <b>You win!</b>" : "You ran out of time.") : "Game over.";
+  },
+  showEnd() {
+    if (!G || G.cfg.opp !== "online") return;
+    if (!this.endInfo) { setTimeout(() => this.showEnd(), 400); return; }
+    const d = this.endInfo, me = G.cfg.human, opp = G.cfg.players[3 - me];
+    const won = d.winner === me, lost = d.winner === 3 - me;
+    const title = d.winner === 0 ? "ABORTED" : d.winner === 3 ? "DRAW" : won ? "YOU WIN!" : "YOU LOST";
+    const sub = d.winner === 0 ? "Nobody moved in time, so it doesn't count." : `vs ${esc(opp.name)} · by ${REASON[d.reason] || d.reason}`;
+    let rate = "";
+    if (d.rated && d.ratings && d.ratings[me]) {
+      const r = d.ratings[me], up = r.delta >= 0;
+      rate = `<div class="ratecard"><div><span>${MODE_NAME[G.s.L]} rating</span><b>${r.old} → ${r.new}</b></div>
+        <div class="delta ${up ? "up" : "down"}">${up ? "+" : ""}${r.delta}</div><div>${tierBadge(r.tier)}</div></div>`;
+    } else if (!d.rated) rate = `<p class="sub" style="margin-top:10px">Friend games don't change ratings.</p>`;
+    openSheet(`<div class="end"><div class="medal ${lost ? "lose" : ""}">${me === 1 ? "X" : "O"}</div><div class="big ${lost ? "lose" : ""}">${title}</div>
+      <p class="sub">${sub}</p>${rate}
+      <div class="row"><button id="eHome">Menu</button><button id="eView">See board</button><button class="pri" id="eAgain">${G.cfg.rated ? "PLAY AGAIN" : "NEW CODE"}</button></div></div>`);
+    $("eHome").onclick = () => { closeSheet(); goHome(); };
+    $("eView").onclick = () => closeSheet();
+    $("eAgain").onclick = () => { closeSheet(); this.again(); };
+  },
+  again() {
+    const L = G ? G.s.L : this.lastMode, rated = G ? G.cfg.rated : true;
+    goHome();
+    if (rated) this.play(L); else this.createRoom(L);
+  },
+  confirmLeave() {
+    openSheet(`<h2>Leave the game?</h2><p style="margin-top:8px">Leaving means you <b>resign</b>${G.cfg.rated ? " and lose rating points" : ""}. If you just close the app instead, your clock keeps running.</p>
+      <div class="row"><button id="lStay">Keep playing</button><button class="pri" id="lGo">RESIGN</button></div>`);
+    $("lStay").onclick = closeSheet;
+    $("lGo").onclick = () => { closeSheet(); this.send({ t: "resign" }); };
+  },
+  subtitle(cfg) {
+    const o = cfg.players[3 - cfg.human];
+    return `${cfg.rated ? "Ranked" : "Friend game"} · vs ${o.name}`;
+  },
+  onStart() {
+    const bar = $("vsbar"), on = G && G.cfg.opp === "online";
+    bar.classList.toggle("hidden", !on);
+    if (!on) return;
+    const P = G.cfg.players;
+    bar.innerHTML = [1, 2].map(p => `<div class="vp" id="vp${p}" style="--pc:${COL[p]}">${avatarHTML(P[p], 32)}<div class="vn"><b>${esc(P[p].name)}${p === G.cfg.human ? " (you)" : ""}</b>
+      <span>${p === 1 ? "X" : "O"} · ${P[p].rating}</span></div><div class="vclock" id="vc${p}"></div></div>`).join(`<div class="vs">VS</div>`);
+  },
+  tick() {
+    if (!G || G.cfg.opp !== "online") return;
+    const s = G.s, left = Math.max(0, this.deadline - now()), over = s.winner || G.forcedEnd;
+    const txt = over ? "" : `${Math.floor(left / 60000)}:${String(Math.floor(left / 1000) % 60).padStart(2, "0")}`;
+    for (const p of [1, 2]) {
+      const el = $("vc" + p); if (!el) continue;
+      const act = !over && s.turn === p;
+      el.textContent = act ? txt : ""; $("vp" + p).classList.toggle("act", act);
+      el.classList.toggle("low", act && left < 10000);
+    }
+    const c = document.querySelector("#turnPill .clock"); if (c) c.textContent = over ? "" : " · " + txt;
+  },
+
+  // ---------- accounts ----------
+  authSheet(kind, email = "") {
+    if (this.status !== "online") { toast("Game servers are offline right now", "#6B6880"); return; }
+    const f = (id, label, type, extra = "") => `<label class="fld"><span>${label}</span><input id="${id}" type="${type}" ${extra}></label>`;
+    const forms = {
+      signup: ["Create your free account", "Play ranked games, climb the leaderboards and play friends with a code.",
+        f("aName", "Player name", "text", 'maxlength="16" autocomplete="nickname"') + f("aEmail", "Email", "email", 'autocomplete="email"') +
+        f("aPw", "Password (8+ characters)", "password", 'autocomplete="new-password"'), "CREATE ACCOUNT",
+        `Already have one? <a id="aSwap">Sign in</a>`],
+      login: ["Welcome back", "Sign in to play online.", f("aEmail", "Email", "email", 'autocomplete="email"') + f("aPw", "Password", "password", 'autocomplete="current-password"'),
+        "SIGN IN", `<a id="aForgot">Forgot password?</a> · New here? <a id="aSwap">Create an account</a>`],
+      verify: ["Check your email", `We sent a 6-digit code to <b>${esc(email)}</b>. It works for 15 minutes.`,
+        `<input id="aCode" class="codein six" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="••••••">`, "VERIFY",
+        `<a id="aResend">Send a new code</a>`],
+      forgot: ["Reset your password", "We'll email you a 6-digit code.", f("aEmail", "Email", "email", `autocomplete="email" value="${esc(email)}"`), "SEND CODE", `<a id="aSwap">Back to sign in</a>`],
+      reset: ["New password", `Enter the code we sent to <b>${esc(email)}</b> and pick a new password.`,
+        `<input id="aCode" class="codein six" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="••••••">` + f("aPw", "New password (8+ characters)", "password", 'autocomplete="new-password"'),
+        "SAVE PASSWORD", `<a id="aResend">Send a new code</a>`],
+    };
+    const [title, sub, fields, btn, foot] = forms[kind];
+    openSheet(`<div class="auth"><div class="sc-bubble" style="width:40px;height:40px"><span style="font-size:15px">SC</span></div><h2>${title}</h2><p class="sub2">${sub}</p>
+      ${fields}<p id="onErr" class="ferr"></p><button class="big-btn" id="aGo" style="width:100%;margin-top:4px">${btn}</button><p class="afoot">${foot}</p></div>`);
+    const v = id => ($(id) ? $(id).value.trim() : "");
+    const busy = on => { $("aGo").disabled = on; $("aGo").style.opacity = on ? .6 : 1; };
+    const fail = d => { $("onErr").textContent = d.error || "Something went wrong."; busy(false); };
+    const done = d => { closeSheet(); this.setSession(d); SFX.boardWin(); haptic("heavy"); confetti(60); toast(`Welcome, ${d.user.name}!`, "#8B5CF6"); };
+    if ($("aSwap")) $("aSwap").onclick = () => this.authSheet(kind === "signup" ? "login" : kind === "login" ? "signup" : "login");
+    if ($("aForgot")) $("aForgot").onclick = () => this.authSheet("forgot", v("aEmail"));
+    if ($("aResend")) $("aResend").onclick = async () => {
+      const d = await this.api("/api/resend", { email, purpose: kind === "verify" ? "verify" : "reset" }).catch(() => ({ ok: false }));
+      $("onErr").textContent = d.ok ? "New code sent!" : (d.error || "Couldn't send a code.");
+    };
+    const code = $("aCode"); if (code) { code.oninput = () => { code.value = code.value.replace(/\D/g, "").slice(0, 6); if (code.value.length === 6 && kind === "verify") $("aGo").click(); }; setTimeout(() => code.focus(), 250); }
+    $("aGo").onclick = async () => {
+      busy(true); $("onErr").textContent = "";
+      try {
+        if (kind === "signup") {
+          const d = await this.api("/api/signup", { name: v("aName"), email: v("aEmail"), password: $("aPw").value });
+          d.ok ? this.authSheet("verify", d.email) : fail(d);
+        } else if (kind === "login") {
+          const d = await this.api("/api/login", { email: v("aEmail"), password: $("aPw").value });
+          if (d.ok && d.need_code) this.authSheet("verify", d.email); else d.ok ? done(d) : fail(d);
+        } else if (kind === "verify") {
+          const d = await this.api("/api/verify", { email, code: v("aCode") }); d.ok ? done(d) : fail(d);
+        } else if (kind === "forgot") {
+          const d = await this.api("/api/forgot", { email: v("aEmail") }); d.ok ? this.authSheet("reset", v("aEmail").toLowerCase()) : fail(d);
+        } else if (kind === "reset") {
+          const d = await this.api("/api/reset", { email, code: v("aCode"), password: $("aPw").value }); d.ok ? done(d) : fail(d);
+        }
+      } catch (e) { fail({ error: "Can't reach the game server." }); }
+    };
+    for (const inp of document.querySelectorAll("#sheet input")) inp.onkeydown = e => { if (e.key === "Enter") $("aGo").click(); };
+  },
+
+  // ---------- profiles ----------
+  statsHTML(u) {
+    return `<div class="mstats">${[1, 2, 3].map(m => { const r = u.ratings[m]; return `<div class="ms"><span>${MODE_NAME[m]}</span><b>${r.rating}</b>${tierBadge(r.tier)}
+      <small>${r.wins}W · ${r.losses}L · ${r.draws}D${r.games ? ` · peak ${r.peak}` : ""}</small></div>`; }).join("")}</div>`;
+  },
+  recentHTML(list) {
+    if (!list || !list.length) return `<p class="sub2">No online games yet.</p>`;
+    return `<div class="recent">${list.map(g => `<div class="rg"><span class="res ${g.result}">${g.result}</span>${avatarHTML(g.opp, 26)}<span class="rn">${esc(g.opp.name)}<small>${MODE_NAME[g.mode]} · ${g.rated ? "ranked" : "friend"}</small></span>
+      <span class="rd ${g.delta >= 0 ? "up" : "down"}">${g.rated ? (g.delta >= 0 ? "+" : "") + g.delta : ""}</span></div>`).join("")}</div>`;
+  },
+  async profileSheet() {
+    if (!this.me) return this.authSheet("login");
+    const d = await this.api("/api/me").catch(() => null); if (d && d.ok) this.me = d.user;
+    const u = this.me;
+    openSheet(`<div class="prof"><div class="phead">${avatarHTML(u, 72)}<div><h2>${esc(u.name)}</h2><p class="sub2">${esc(u.email)}</p></div></div>
+      ${this.statsHTML(u)}
+      <h3>Recent games</h3>${this.recentHTML(u.recent)}
+      <h3>Edit profile</h3><label class="fld"><span>Player name</span><input id="pName" maxlength="16" value="${esc(u.name)}"></label>
+      <div class="swatches">${ON_COLOURS.map(c => `<button class="sw ${c === u.colour ? "on" : ""}" data-c="${c}" style="background:${c}"></button>`).join("")}</div>
+      <div class="avpick">${ON_AVATARS.map(a => `<button class="av ${a === u.avatar ? "on" : ""}" data-a="${a}">${a}</button>`).join("")}</div>
+      <p id="onErr" class="ferr"></p>
+      <div class="row"><button id="pLB">Leaderboards</button><button class="pri" id="pSave">SAVE</button></div>
+      <div class="row"><button id="pOut">Sign out</button><button id="pDel" class="danger">Delete account</button></div></div>`);
+    let colour = u.colour, avatar = u.avatar;
+    document.querySelectorAll(".sw").forEach(b => b.onclick = () => { colour = b.dataset.c; document.querySelectorAll(".sw").forEach(x => x.classList.toggle("on", x === b)); SFX.tap(); });
+    document.querySelectorAll(".avpick .av").forEach(b => b.onclick = () => { avatar = b.dataset.a; document.querySelectorAll(".avpick .av").forEach(x => x.classList.toggle("on", x === b)); SFX.tap(); });
+    $("pSave").onclick = async () => {
+      const d = await this.api("/api/profile", { name: $("pName").value.trim(), colour, avatar }).catch(() => ({ ok: false, error: "Can't reach the server." }));
+      if (!d.ok) { $("onErr").textContent = d.error; return; }
+      this.me = d.user; this.refreshHome(); SFX.boardWin(); toast("Profile saved!", colour); closeSheet();
+    };
+    $("pLB").onclick = () => this.leaderboardSheet(prefs.L);
+    $("pOut").onclick = async () => { await this.api("/api/logout", {}).catch(() => {}); this.signOutLocal(); closeSheet(); toast("Signed out", "#6B6880"); };
+    $("pDel").onclick = () => {
+      openSheet(`<h2>Delete your account?</h2><p style="margin-top:8px">This removes your profile, ratings and stats forever. Type your password to confirm.</p>
+        <label class="fld"><span>Password</span><input id="dPw" type="password"></label><p id="onErr" class="ferr"></p>
+        <div class="row"><button id="dNo">Keep it</button><button class="danger" id="dYes">DELETE FOREVER</button></div>`);
+      $("dNo").onclick = () => this.profileSheet();
+      $("dYes").onclick = async () => {
+        const d = await this.api("/api/delete", { password: $("dPw").value }).catch(() => ({ ok: false, error: "Can't reach the server." }));
+        if (!d.ok) { $("onErr").textContent = d.error; return; }
+        this.signOutLocal(); closeSheet(); toast("Account deleted", "#6B6880");
+      };
+    };
+  },
+  async publicProfile(id) {
+    const d = await this.api("/api/user/" + id).catch(() => null);
+    if (!d || !d.ok) { toast("Couldn't load that player", "#6B6880"); return; }
+    const u = d.user;
+    openSheet(`<div class="prof"><div class="phead">${avatarHTML(u, 72)}<div><h2>${esc(u.name)}</h2><p class="sub2">${u.online ? "🟢 Online now" : "Offline"}</p></div></div>
+      ${this.statsHTML(u)}<h3>Recent games</h3>${this.recentHTML(u.recent)}
+      <div class="row"><button class="pri" id="ppBack">BACK TO LEADERBOARD</button></div></div>`);
+    $("ppBack").onclick = () => this.leaderboardSheet(this.lbMode || 3, this.lbPeriod || "all");
+  },
+
+  // ---------- leaderboards ----------
+  async leaderboardSheet(mode = 3, period = "all") {
+    this.lbMode = mode; this.lbPeriod = period;
+    if (this.status !== "online") { toast("Game servers are offline right now", "#6B6880"); return; }
+    const tabs = (items, cur, cls) => `<div class="tabs ${cls}">${items.map(([v, l]) => `<button data-v="${v}" class="${String(v) === String(cur) ? "on" : ""}">${l}</button>`).join("")}</div>`;
+    openSheet(`<div class="lb"><h2>🏆 Leaderboards</h2>
+      ${tabs([[1, "Classic"], [2, "Ultimate"], [3, "Cubed³"]], mode, "tm")}${tabs(PERIODS, period, "tp")}
+      <p class="sub2" style="margin:8px 0 6px">${period === "all" ? "Highest ratings. Players appear after 10 ranked games." : "Most rating points gained " + (period === "day" ? "today" : period === "week" ? "this week" : "this month") + " in ranked games."}</p>
+      <div id="lbRows" class="lbrows"><p class="sub2">Loading…</p></div>
+      <details class="how"><summary>How ranking works</summary>
+        <p>Everyone starts at <b>1000</b>. Ranked wins and losses move your rating using the same Elo system chess uses:</p>
+        <ul><li>Beat a <b>stronger</b> player and you gain a lot. Beat a weaker one and you only gain a little.</li>
+        <li>Lose to a weaker player and you drop a lot. Draws move you toward your opponent.</li>
+        <li>Your first <b>10 games are placement</b>: ratings move fast (up to ±40) while the game figures you out. After that, ±24, then ±16, and only ±12 once you reach Master.</li>
+        <li>Each mode (Classic, Ultimate, Cubed³) has its own rating.</li></ul>
+        <div class="tiers">${TIER_LIST.slice().reverse().map(([f, n]) => `<span>${tierBadge(n)} <small>${f ? f + "+" : "start"}</small></span>`).join("")}</div>
+        <p class="sub2">Grandmaster means winning far more than you lose against other strong players. Most players finish around Silver or Gold.</p>
+      </details>
+      <div class="row"><button class="pri" id="lbClose">DONE</button></div></div>`);
+    document.querySelectorAll(".tm button").forEach(b => b.onclick = () => { SFX.tap(); this.leaderboardSheet(+b.dataset.v, period); });
+    document.querySelectorAll(".tp button").forEach(b => b.onclick = () => { SFX.tap(); this.leaderboardSheet(mode, b.dataset.v); });
+    $("lbClose").onclick = closeSheet;
+    const d = await this.api(`/api/leaderboard?mode=${mode}&period=${period}`).catch(() => null);
+    const box = $("lbRows"); if (!box) return;
+    if (!d || !d.ok) { box.innerHTML = `<p class="sub2">Couldn't load the leaderboard.</p>`; return; }
+    if (!d.rows.length) { box.innerHTML = `<p class="sub2">Nobody here yet. ${period === "all" ? "Play 10 ranked games to be first!" : "Win a ranked game to take the top spot!"}</p>`; return; }
+    box.innerHTML = d.rows.map((r, i) => `<button class="lbr ${this.me && r.id === this.me.id ? "me" : ""}" data-id="${r.id}"><span class="rk">${i < 3 ? ["🥇", "🥈", "🥉"][i] : i + 1}</span>
+      ${avatarHTML(r, 32)}<span class="ln"><b>${esc(r.name)}</b>${tierBadge(r.tier)}</span>
+      <span class="sc">${period === "all" ? r.score : (r.score >= 0 ? "+" : "") + r.score}<small>${period === "all" ? `${r.games} games` : `${r.wins}W of ${r.games}`}</small></span></button>`).join("");
+    document.querySelectorAll(".lbr").forEach(b => b.onclick = () => { SFX.tap(); this.publicProfile(b.dataset.id); });
+  },
+
+  // ---------- home panel ----------
+  refreshHome() {
+    const st = $("srvStatus"); if (!st) return;
+    const onl = this.status === "online";
+    st.className = "srv " + this.status;
+    $("srvText").innerHTML = this.status === "checking" ? "Checking game servers…"
+      : onl ? `Game servers online · ${this.info ? this.info.online : 0} player${this.info && this.info.online === 1 ? "" : "s"} on now`
+      : "Game servers are offline right now. You can still play Pass &amp; Play or vs AI.";
+    $("onOut").classList.toggle("hidden", !onl || !!this.me);
+    $("onIn").classList.toggle("hidden", !onl || !this.me);
+    $("lbBtn").classList.toggle("hidden", !onl);
+    if (this.me) {
+      const r = this.me.ratings[prefs.L];
+      $("meCard").innerHTML = `${avatarHTML(this.me, 46)}<div class="mi"><b>${esc(this.me.name)}</b><span>${MODE_NAME[prefs.L]} · <b>${r.rating}</b> ${tierBadge(r.tier)}</span>
+        <small>${r.wins}W · ${r.losses}L · ${r.draws}D</small></div><span class="chev2">›</span>`;
+    }
+    if (prefs.opp === "online") {
+      const pb = $("playBtn");
+      pb.textContent = !onl ? (this.status === "checking" ? "CONNECTING…" : "SERVERS OFFLINE") : this.me ? "FIND RANKED MATCH" : "SIGN IN TO PLAY ONLINE";
+      pb.classList.toggle("off", !onl);
+    }
+  },
+};
+
+// wire up home controls
+$("onSignup").onclick = () => { SFX.init(); SFX.tap(); Online.authSheet("signup"); };
+$("onLogin").onclick = () => { SFX.init(); SFX.tap(); Online.authSheet("login"); };
+$("meCard").onclick = () => { SFX.init(); SFX.tap(); Online.profileSheet(); };
+$("createRoomBtn").onclick = () => { SFX.init(); SFX.tap(); Online.createRoom(prefs.L); };
+$("joinRoomBtn").onclick = () => { SFX.init(); SFX.tap(); Online.joinSheet(); };
+$("lbBtn").onclick = () => { SFX.init(); SFX.tap(); Online.leaderboardSheet(prefs.L); };
+$("srvStatus").onclick = () => { if (Online.status !== "online") Online.discover(); };
+setInterval(() => { const t = $("searchT"); if (t && Online.lobby === "queue") { const s = Math.floor((now() - Online.lobbyT) / 1000); t.textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; } }, 500);
+setInterval(() => { if ($("home").classList.contains("active") && prefs.opp === "online" && Online.status !== "online") Online.discover(); }, 60000);
+Online.discover();
 
 </script>
 </body>

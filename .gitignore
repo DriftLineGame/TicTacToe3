@@ -1,0 +1,9 @@
+# Server secrets and data: never upload these
+server/email-password.txt
+server/admin-password.txt
+server/secret.key
+server/config.json
+server/*.db
+server/*.db-*
+server/cloudflared.exe
+__pycache__/
