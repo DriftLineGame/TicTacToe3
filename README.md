@@ -1,6 +1,6 @@
 # Tic-Tac-Toe³
 
-A phone-first tic-tac-toe arcade by **LJ** · Powered by SCODE · v3.1
+A phone-first tic-tac-toe arcade by **LJ** · Powered by SCODE · v3.2
 
 **Play:** https://driftlinegame.github.io/tictactoe3/ (after GitHub Pages is turned on)
 
@@ -21,6 +21,7 @@ The game server lives in [`server/`](server/) and runs on LJ's own computer thro
 Free accounts with emailed codes, ranked matchmaking with Elo ratings and tiers, 4-digit friend games, daily / weekly / monthly / all-time leaderboards, and a local-only admin hub.
 
 ## Version history
+- **v3.2**: background music. Three original 2-minute looping tracks in the SCODE synth sound: Nebula Drift (dreamy & chill), Neon Grid (upbeat synthwave) and Wormhole (lo-fi groove). Pick one on the home screen or tap the ♪ button in a game to switch tracks or turn music off. It remembers your choice, pauses when you leave the app, and fades under the tutorial video.
 - **v3.1**: new SCODE intro: tap ENTER on the splash to play the SCODE startup sound (an original swarm-into-chord sting) while the logo swells, then the game fades in. "Enter without sound" skips it.
 - **v3.0**: Online mode. Accounts (sign up with a 6-digit email code, sign in, reset password, delete account), profiles with colour and avatar, ranked matchmaking per mode with Elo ratings, placement games and tiers (Bronze → Grandmaster), friend games with a 4-digit code, server-checked moves, turn timer, reconnecting, resign, rating change on the result screen, leaderboards (today, this week, this month, all-time), "servers offline" handling, plus the Python game server, admin hub and Windows launcher scripts.
 - **v2.1**: fixed the PLAY button getting squished (text cut off) on iPhone.
