@@ -37,7 +37,19 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .sc-bubble.big span{font-size:62px;filter:blur(.3px)}
 
 #splash{position:fixed;inset:0;z-index:50;background:var(--bg);display:grid;place-items:center;align-content:center;gap:22px;transition:opacity .5s ease}
-#splash .sc-bubble.big{animation:pop .9s cubic-bezier(.2,1.6,.4,1) both}
+#splash .sc-bubble.big{position:relative;animation:pop .9s cubic-bezier(.2,1.6,.4,1) both, sfloat 3.2s 1s ease-in-out infinite}
+#splash .ring{position:absolute;inset:-6px;border-radius:50%;border:3px solid var(--violet);opacity:0}
+#splash.go .sc-bubble.big{animation:sswell 5s cubic-bezier(.5,0,.2,1) forwards}
+#splash.go .ring{animation:sring 1.6s ease-out infinite}#splash.go .ring:nth-child(2){animation-delay:.5s;border-color:var(--pink)}#splash.go .ring:nth-child(3){animation-delay:1s;border-color:var(--blue)}
+#splash .enter{font-family:"Archivo Black",sans-serif;font-size:19px;letter-spacing:.08em;color:#fff;background:var(--grad);padding:16px 40px;border-radius:999px;box-shadow:0 10px 26px rgba(139,92,246,.4);animation:rise .6s .7s both;transition:opacity .4s,transform .15s}
+#splash .enter:active{transform:scale(.96)}
+#splash .quiet{color:var(--grey);font-weight:600;font-size:14px;padding:4px 10px;animation:rise .6s .85s both;transition:opacity .4s}
+#splash.go .enter,#splash.go .quiet{animation:sout .35s forwards;pointer-events:none}
+@keyframes sout{to{opacity:0;transform:scale(.9)}}
+#splash .sfoot{position:absolute;bottom:calc(22px + var(--sab));font-size:13px;font-weight:700;color:var(--grey)}
+@keyframes sfloat{50%{transform:translateY(-8px)}}
+@keyframes sswell{0%{transform:scale(1) rotate(0)}45%{transform:scale(.92) rotate(-6deg)}100%{transform:scale(1.18);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.65),0 0 90px 30px rgba(139,92,246,.45)}}
+@keyframes sring{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.9);opacity:0}}
 #splash .word{font-family:"Archivo Black",sans-serif;font-size:34px;letter-spacing:.06em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;animation:rise .6s .45s both}
 #splash.out{opacity:0;pointer-events:none}
 @keyframes pop{0%{transform:scale(.2);opacity:0}100%{transform:scale(1);opacity:1}}
@@ -290,7 +302,9 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 </style>
 </head>
 <body>
-<div id="splash"><div class="sc-bubble big"><span>SC</span></div><div class="word">SCODE</div></div>
+<div id="splash"><div class="sc-bubble big"><i class="ring"></i><i class="ring"></i><i class="ring"></i><span>SC</span></div><div class="word">SCODE</div>
+  <button class="enter" id="enterBtn">ENTER</button><button class="quiet" id="enterQuiet">Enter without sound</button>
+  <div class="sfoot">Tic-Tac-Toe³ · Powered by SCODE</div></div>
 
 <!-- ================= HOME ================= -->
 <section id="home" class="screen active">
@@ -340,7 +354,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
     <button id="tutBtn" class="tut-card"><span class="play">▶</span><div><b>Watch the tutorial</b><span>3-minute video: from tic-tac-toe to Cubed³</span></div></button>
     <button id="rulesBtn" class="link-btn">How to play this mode</button>
     <button id="vibeBtn" class="link-btn" style="color:var(--grey);font-size:13.5px;padding:2px"></button>
-    <div class="brand"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE <span class="ver">· v3.0</span></div>
+    <div class="brand"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE <span class="ver">· v3.1</span></div>
   </div>
 </section>
 
@@ -372,7 +386,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
       <button id="wormBtn" class="worm-btn hidden"></button>
       <button id="confirmBtn" class="confirm-btn" disabled>CONFIRM</button>
     </div>
-    <div class="gfoot"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE · v3.0</div>
+    <div class="gfoot"><span class="sc-bubble"><span>SC</span></span>Powered by SCODE · v3.1</div>
   </div>
   <div id="pBot" class="ppanel bot"></div>
 </section>
@@ -631,7 +645,7 @@ function ENGINE() {
 <script>
 "use strict";
 const E = ENGINE();
-const VERSION = "v3.0";
+const VERSION = "v3.1";
 const $ = id => document.getElementById(id);
 const POS = ["top-left", "top-middle", "top-right", "middle-left", "centre", "middle-right", "bottom-left", "bottom-middle", "bottom-right"];
 const COL = { 1: "#EC4899", 2: "#3B82F6" };
@@ -1624,8 +1638,19 @@ $("continueBtn").onclick = () => { SFX.init(); SFX.tap(); const sv = loadSave();
 
 // ---- boot
 buildPanels(); soundIcon(); refreshHome(); makeWorker(); sizeCanvas(fx, fxctx, window.innerWidth, window.innerHeight); requestAnimationFrame(loop);
-setTimeout(() => $("splash").classList.add("out"), 1500);
-setTimeout(() => $("splash").remove(), 2100);
+// SCODE intro: one tap to enter (browsers only allow sound after a tap), plays the SCODE startup sting
+(function () {
+  const sp = $("splash"); let done = false;
+  const finish = () => { if (done) return; done = true; sp.classList.add("out"); setTimeout(() => sp.remove(), 600); };
+  $("enterBtn").addEventListener("click", () => {
+    SFX.init(); haptic("heavy");
+    sp.classList.add("go");
+    if (prefs.sound) { const au = new Audio("scode-startup.mp3"); au.volume = .9; au.play().catch(() => {}); }
+    setTimeout(finish, prefs.sound ? 5000 : 1200);
+    setTimeout(() => sp.addEventListener("click", finish), 400); // a later tap skips the wait
+  }, { once: true });
+  $("enterQuiet").addEventListener("click", () => { SFX.init(); finish(); }, { once: true });
+})();
 window.__ttt = { get G() { return G; }, E, startGame, commit, setPending, confirmMove };
 
 </script>
